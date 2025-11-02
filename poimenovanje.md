@@ -135,5 +135,3 @@ public class MyGarage : MonoBehaviour
     }
 }
 ```
-
-By sticking to this standard, we make our code predictable and easy to read, which is absolutely essential for collaborating and building this game on schedule.
