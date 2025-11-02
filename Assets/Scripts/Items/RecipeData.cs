@@ -6,6 +6,7 @@ public class ItemQuantity
 {
     public ItemData item;
     public int amount;
+	public int recipeID;
 }
 
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Crafting/Recipe")]
