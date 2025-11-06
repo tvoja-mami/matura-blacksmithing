@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4683315174763624674}
   - component: {fileID: 6759188173983308498}
   - component: {fileID: 1392800063870299815}
+  - component: {fileID: 6590428473052370354}
   m_Layer: 5
   m_Name: InventoryItem_Prefab
   m_TagString: Untagged
@@ -78,6 +79,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6590428473052370354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561003882252093297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3aa1c17e4d84b8fb815e42d79083c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
+  item: {fileID: 0}
+  iconImage: {fileID: 0}
+  quantityText: {fileID: 0}
+  nameText: {fileID: 0}
 --- !u!1 &4156757519690976046
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6695169022776897205, guid: 023cb5ae86b7bdb83810f673812824e9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
