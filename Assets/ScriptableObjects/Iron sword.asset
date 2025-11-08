@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e234bea6c2dafc3933496395a32d6f, type: 3}
   m_Name: Iron sword
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Iron Sword
+  itemID: 0
+  icon: {fileID: -1939203981184712270, guid: b60e7d38df1ac128a9f658adce0844cf, type: 3}
   baseValue: 0
   description: 
+  quantity: 0
