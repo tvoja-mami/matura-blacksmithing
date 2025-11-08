@@ -24,7 +24,7 @@ public class InventoryItem : MonoBehaviour
         if (iconImage == null)
         {
             // Look for child named "icon" - NOT the root Image
-            Transform iconTransform = transform.Find("icon");
+            Transform iconTransform = transform.Find("Icon");
             if (iconTransform != null)
             {
                 iconImage = iconTransform.GetComponent<Image>();
