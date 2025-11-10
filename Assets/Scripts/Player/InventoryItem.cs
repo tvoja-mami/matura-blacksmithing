@@ -23,7 +23,7 @@ public class InventoryItem : MonoBehaviour
         // Get references if not set
         if (iconImage == null)
         {
-            // Look for child named "icon" - NOT the root Image
+            // Look for child named "Icon" - NOT the root Image
             Transform iconTransform = transform.Find("Icon");
             if (iconTransform != null)
             {

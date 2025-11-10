@@ -100,17 +100,37 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenCatalogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""68e26f88-05d0-4072-9ff0-79eb55c26c3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""fc29651c-8950-4c95-82cc-2e5380715181"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""925ff2e0-252e-4101-837c-026768caeb47"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenCatalogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -122,6 +142,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Gameplay_OpenCatalogue = m_Gameplay.FindAction("OpenCatalogue", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -203,6 +224,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_OpenInventory;
+    private readonly InputAction m_Gameplay_OpenCatalogue;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -218,6 +240,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/OpenInventory".
         /// </summary>
         public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/OpenCatalogue".
+        /// </summary>
+        public InputAction @OpenCatalogue => m_Wrapper.m_Gameplay_OpenCatalogue;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -247,6 +273,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
+            @OpenCatalogue.started += instance.OnOpenCatalogue;
+            @OpenCatalogue.performed += instance.OnOpenCatalogue;
+            @OpenCatalogue.canceled += instance.OnOpenCatalogue;
         }
 
         /// <summary>
@@ -261,6 +290,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
+            @OpenCatalogue.started -= instance.OnOpenCatalogue;
+            @OpenCatalogue.performed -= instance.OnOpenCatalogue;
+            @OpenCatalogue.canceled -= instance.OnOpenCatalogue;
         }
 
         /// <summary>
@@ -308,5 +340,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenCatalogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenCatalogue(InputAction.CallbackContext context);
     }
 }

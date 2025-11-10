@@ -14,17 +14,37 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenCatalogue",
+                    "type": "Button",
+                    "id": "68e26f88-05d0-4072-9ff0-79eb55c26c3d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "fc29651c-8950-4c95-82cc-2e5380715181",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "925ff2e0-252e-4101-837c-026768caeb47",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenCatalogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
