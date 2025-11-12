@@ -37,7 +37,7 @@ public class InventoryItem : MonoBehaviour
             }
         }
 
-        if (playerInventory == null) playerInventory = FindObjectOfType<PlayerInventory>();
+        if (playerInventory == null) playerInventory = FindFirstObjectByType<PlayerInventory>();
 
         // Try to find TextMeshProUGUI children by name
         if (quantityText == null)

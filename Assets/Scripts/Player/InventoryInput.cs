@@ -32,10 +32,10 @@ public class InventoryInput : MonoBehaviour
         
         // Auto-find references if not assigned
         if (inventoryUI == null)
-            inventoryUI = FindObjectOfType<InventoryUI>();
+            inventoryUI = FindFirstObjectByType<InventoryUI>();
         
         if (playerInventory == null)
-            playerInventory = FindObjectOfType<PlayerInventory>();
+            playerInventory = FindFirstObjectByType<PlayerInventory>();
         
         // Make sure inventory starts hidden
         if (inventoryPanel != null)
