@@ -7,15 +7,14 @@ public class GameManager : MonoBehaviour
     public ItemData ironOreItem;
     public ItemData ironSwordItem;
 	public InventoryUI inventoryUi;
-    public int ironOreAmount = 0;
-    public int goldAmount = 100;
+    public PlayerGold playerGold;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Try to find references if not assigned
         if (playerInventory == null)
         {
-            playerInventory = FindObjectOfType<PlayerInventory>();
+            playerInventory = FindFirstObjectByType<PlayerInventory>();
             if (playerInventory == null)
             {
                 Debug.LogError("GameManager: Could not find PlayerInventory in scene!");
@@ -26,10 +25,21 @@ public class GameManager : MonoBehaviour
 
         if (inventoryUi == null)
         {
-            inventoryUi = FindObjectOfType<InventoryUI>();
+            inventoryUi = FindFirstObjectByType<InventoryUI>();
             if (inventoryUi == null)
             {
                 Debug.LogError("GameManager: Could not find InventoryUI in scene!");
+                enabled = false;
+                return;
+            }
+        }
+
+        if (playerGold == null)
+        {
+            playerGold = FindFirstObjectByType<PlayerGold>();
+            if (playerGold == null)
+            {
+                Debug.LogError("GameManager: Could not find PlayerGold in scene!");
                 enabled = false;
                 return;
             }
@@ -93,6 +103,7 @@ public class GameManager : MonoBehaviour
 			if (currentCount >= 1)
 			{
 				playerInventory.RemoveItem(ironSwordItem, 1);
+				playerGold.AddGold(100); // Add 100 gold for selling a sword
 				int remaining = playerInventory.items.ContainsKey(ironSwordItem) ? playerInventory.items[ironSwordItem] : 0;
 				Debug.Log("Removed 1 iron sword. You have " + remaining + " left");
                 inventoryUi.UpdateInventoryUI(playerInventory);
@@ -105,8 +116,8 @@ public class GameManager : MonoBehaviour
 		
     }
 	public void GetGold_DEBUG(int amount)
-	{
-		goldAmount += amount;
-		Debug.Log("You have " + goldAmount + " gold.");
+    {
+        amount = 5;
+		playerGold.AddGold(amount);
 	}
 }

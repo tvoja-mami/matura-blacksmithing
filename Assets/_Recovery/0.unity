@@ -479,8 +479,7 @@ MonoBehaviour:
   ironOreItem: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
   ironSwordItem: {fileID: 11400000, guid: dd5946081678882fdba751ed3ec83add, type: 2}
   inventoryUi: {fileID: 0}
-  ironOreAmount: 0
-  goldAmount: 0
+  playerGold: {fileID: 0}
 --- !u!1 &285774337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,8 +1412,7 @@ MonoBehaviour:
   ironOreItem: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
   ironSwordItem: {fileID: 11400000, guid: dd5946081678882fdba751ed3ec83add, type: 2}
   inventoryUi: {fileID: 0}
-  ironOreAmount: 0
-  goldAmount: 0
+  playerGold: {fileID: 0}
 --- !u!1 &911182923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,8 +2346,7 @@ MonoBehaviour:
   ironOreItem: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
   ironSwordItem: {fileID: 11400000, guid: dd5946081678882fdba751ed3ec83add, type: 2}
   inventoryUi: {fileID: 625513080}
-  ironOreAmount: 0
-  goldAmount: 0
+  playerGold: {fileID: 0}
 --- !u!1 &1520596220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,8 +2577,7 @@ MonoBehaviour:
   ironOreItem: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
   ironSwordItem: {fileID: 11400000, guid: dd5946081678882fdba751ed3ec83add, type: 2}
   inventoryUi: {fileID: 0}
-  ironOreAmount: 0
-  goldAmount: 0
+  playerGold: {fileID: 0}
 --- !u!1 &1718553272
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,6 +2712,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718553272}
   m_CullTransparentMesh: 1
+--- !u!1 &1839514784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839514786}
+  - component: {fileID: 1839514785}
+  m_Layer: 0
+  m_Name: PlayerGold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1839514785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839514784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6b87fcbaa1e4ef1b0a121c9adcba51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGold
+  currentGold: 100
+--- !u!4 &1839514786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839514784}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 571.5526, y: 288.08322, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965759146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,8 +2805,7 @@ MonoBehaviour:
   ironOreItem: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
   ironSwordItem: {fileID: 11400000, guid: dd5946081678882fdba751ed3ec83add, type: 2}
   inventoryUi: {fileID: 0}
-  ironOreAmount: 0
-  goldAmount: 0
+  playerGold: {fileID: 0}
 --- !u!1 &2042289699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,3 +3289,4 @@ SceneRoots:
   - {fileID: 498203661}
   - {fileID: 2042289703}
   - {fileID: 1520596222}
+  - {fileID: 1839514786}
