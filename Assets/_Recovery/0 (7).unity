@@ -3435,9 +3435,6 @@ MonoBehaviour:
   oreCrate: {fileID: 0}
   crateTypeText: {fileID: 39931250}
   cratePriceText: {fileID: 575660374}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
 --- !u!4 &1558283916
 Transform:
   m_ObjectHideFlags: 0
@@ -3933,7 +3930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1965759148}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GetOre_DEBUG
+        m_MethodName: SellSword_DEBUG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
