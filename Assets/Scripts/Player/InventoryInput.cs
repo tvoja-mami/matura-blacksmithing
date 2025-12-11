@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Text;
 
 public class InventoryInput : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class InventoryInput : MonoBehaviour
     
     private PlayerControls controls;
     private bool isInventoryOpen = false;
+    private bool inputReady = false;
 
     void Awake()
     {
@@ -40,13 +42,27 @@ public class InventoryInput : MonoBehaviour
         // Make sure inventory starts hidden
         if (inventoryPanel != null)
         {
+            // Ensure we have a CanvasGroup so we can hide without disabling the GameObject
+            if (canvasGroup == null)
+            {
+                canvasGroup = inventoryPanel.GetComponent<CanvasGroup>();
+                if (canvasGroup == null)
+                {
+                    canvasGroup = inventoryPanel.AddComponent<CanvasGroup>();
+                }
+            }
+
+            // Keep panel active so InventoryUI stays subscribed; hide via CanvasGroup
+            inventoryPanel.SetActive(true);
             HideInventory();
-            Debug.Log("InventoryInput: Inventory panel found and hidden");
+            Debug.Log("InventoryInput: Inventory panel found and hidden via CanvasGroup");
         }
         else
         {
             Debug.LogError("InventoryInput: inventoryPanel is NOT assigned in Inspector!");
         }
+
+        inputReady = true;
     }
 
     void OnEnable()
@@ -70,6 +86,9 @@ public class InventoryInput : MonoBehaviour
 
     private void OnOpenInventory(InputAction.CallbackContext context)
     {
+        if (!inputReady)
+            return;
+
         Debug.Log("OnOpenInventory called!");
         
         if (inventoryPanel == null)
@@ -114,6 +133,8 @@ public class InventoryInput : MonoBehaviour
             inventoryUI.UpdateInventoryUI(playerInventory);
             Debug.Log("InventoryInput: Refreshed inventory UI");
         }
+
+        LogInventoryContents();
     }
 
     private void HideInventory()
@@ -129,7 +150,7 @@ public class InventoryInput : MonoBehaviour
         }
         else
         {
-            // Fallback to SetActive
+            // Fallback to SetActive (last resort)
             inventoryPanel.SetActive(false);
         }
     }
@@ -151,5 +172,30 @@ public class InventoryInput : MonoBehaviour
             isInventoryOpen = true;
             ShowInventory();
         }
+    }
+
+    private void LogInventoryContents()
+    {
+        if (playerInventory == null)
+        {
+            Debug.LogWarning("InventoryInput: PlayerInventory reference missing; cannot log inventory contents.");
+            return;
+        }
+
+        if (playerInventory.items == null || playerInventory.items.Count == 0)
+        {
+            Debug.Log("InventoryInput: Inventory dictionary empty when opening inventory.");
+            return;
+        }
+
+        var sb = new StringBuilder();
+        sb.AppendLine("InventoryInput: Inventory contents when opening:");
+        foreach (var entry in playerInventory.items)
+        {
+            string itemName = entry.Key != null ? entry.Key.itemName : "<null ItemData>";
+            sb.AppendLine($" - {itemName}: {entry.Value}");
+        }
+
+        Debug.Log(sb.ToString());
     }
 }

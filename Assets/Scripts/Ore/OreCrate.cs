@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class OreCrate : MonoBehaviour
+[CreateAssetMenu(fileName = "New Ore Crate", menuName = "Items/Ore Crate")]
+public class OreCrate : ScriptableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string crateType;
+    public int cratePrice;
+    public int oreAmount;
 }

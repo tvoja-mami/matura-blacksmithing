@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public PlayerInventory playerInventory;
     public ItemData ironOreItem;
     public ItemData ironSwordItem;
-	public InventoryUI inventoryUi;
+    public InventoryUI inventoryUi;
     public PlayerGold playerGold;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,62 +62,62 @@ public class GameManager : MonoBehaviour
     {
     }
     public void GetOre_DEBUG()
-	{
-		// Add 5 iron ore to the player's inventory using the inventory API
-		playerInventory.AddItem(ironOreItem, 5);
-		if (playerInventory.items.TryGetValue(ironOreItem, out int newCount))
-		{
-			Debug.Log($"The player now has {newCount} Iron ores");
-		}
-		else
-		{
-			Debug.Log("The player has no Iron ores");
-		}
+    {
+        // Add 5 iron ore to the player's inventory using the inventory API
+        playerInventory.AddItem(ironOreItem, 5);
+        if (playerInventory.items.TryGetValue(ironOreItem, out int newCount))
+        {
+            Debug.Log($"The player now has {newCount} Iron ores");
+        }
+        else
+        {
+            Debug.Log("The player has no Iron ores");
+        }
         inventoryUi.UpdateInventoryUI(playerInventory);
-	}
+    }
     public void CraftSword_DEBUG()
     {
-		if (playerInventory.items.TryGetValue(ironOreItem, out int currentCount))
-		{
-			int removeQuantity = 3;
-			if (currentCount >= removeQuantity)
-			{
-				// remove ores and add crafted sword using PlayerInventory API
-				playerInventory.RemoveItem(ironOreItem, removeQuantity);
-				playerInventory.AddItem(ironSwordItem, 1);
-				int remainingOre = playerInventory.items.ContainsKey(ironOreItem) ? playerInventory.items[ironOreItem] : 0;
-				int swordCount = playerInventory.items.ContainsKey(ironSwordItem) ? playerInventory.items[ironSwordItem] : 0;
-				Debug.Log($"One iron sword crafted. Remaining: {remainingOre} iron. You have {swordCount} iron swords");
+        if (playerInventory.items.TryGetValue(ironOreItem, out int currentCount))
+        {
+            int removeQuantity = 3;
+            if (currentCount >= removeQuantity)
+            {
+                // remove ores and add crafted sword using PlayerInventory API
+                playerInventory.RemoveItem(ironOreItem, removeQuantity);
+                playerInventory.AddItem(ironSwordItem, 1);
+                int remainingOre = playerInventory.items.ContainsKey(ironOreItem) ? playerInventory.items[ironOreItem] : 0;
+                int swordCount = playerInventory.items.ContainsKey(ironSwordItem) ? playerInventory.items[ironSwordItem] : 0;
+                Debug.Log($"One iron sword crafted. Remaining: {remainingOre} iron. You have {swordCount} iron swords");
                 inventoryUi.UpdateInventoryUI(playerInventory);
-			}
-			else
-			{
-				Debug.Log($"Not enough materials. You have {currentCount} materials");
-			}
-		}
+            }
+            else
+            {
+                Debug.Log($"Not enough materials. You have {currentCount} materials");
+            }
+        }
     }
     public void SellSword_DEBUG()
     {
-		if (playerInventory.items.TryGetValue(ironSwordItem, out int currentCount))
-		{
-			if (currentCount >= 1)
-			{
-				playerInventory.RemoveItem(ironSwordItem, 1);
-				playerGold.AddGold(100); // Add 100 gold for selling a sword
-				int remaining = playerInventory.items.ContainsKey(ironSwordItem) ? playerInventory.items[ironSwordItem] : 0;
-				Debug.Log("Removed 1 iron sword. You have " + remaining + " left");
+        if (playerInventory.items.TryGetValue(ironSwordItem, out int currentCount))
+        {
+            if (currentCount >= 1)
+            {
+                playerInventory.RemoveItem(ironSwordItem, 1);
+                playerGold.AddGold(100); // Add 100 gold for selling a sword
+                int remaining = playerInventory.items.ContainsKey(ironSwordItem) ? playerInventory.items[ironSwordItem] : 0;
+                Debug.Log("Removed 1 iron sword. You have " + remaining + " left");
                 inventoryUi.UpdateInventoryUI(playerInventory);
-			}
-		}
-		else
-		{
-			Debug.Log("You don't have an iron sword");
-		}
-		
+            }
+        }
+        else
+        {
+            Debug.Log("You don't have an iron sword");
+        }
+
     }
-	public void GetGold_DEBUG(int amount)
+    public void GetGold_DEBUG(int amount)
     {
         amount = 5;
-		playerGold.AddGold(amount);
-	}
+        playerGold.AddGold(amount);
+    }
 }
