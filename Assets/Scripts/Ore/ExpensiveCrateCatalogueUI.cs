@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CheapCrateCatalogueUI : MonoBehaviour
+public class ExpensiveCrateCatalogueUI : MonoBehaviour
 {
     [Header("UI References")]
     public TextMeshProUGUI crateTypeText;
@@ -13,9 +13,9 @@ public class CheapCrateCatalogueUI : MonoBehaviour
     public ItemData oreItem;
 
     [Header("Crate Settings")]
-    public string crateName = "Cheap Ore Crate";
-    public int cratePrice = 50;
-    public int oreAmount = 10;
+    public string crateName = "Expensive Ore Crate";
+    public int cratePrice = 150;
+    public int oreAmount = 30;
 
     private void Awake()
     {
@@ -43,12 +43,12 @@ public class CheapCrateCatalogueUI : MonoBehaviour
 
             if (oreItem == null)
             {
-                Debug.LogWarning("CheapCrateCatalogueUI: oreItem is not assigned and no default was found. Drag an ItemData asset into the Ore Item field.", this);
+            Debug.LogWarning("ExpensiveCrateCatalogueUI: oreItem is not assigned and no default was found. Drag an ItemData asset into the Ore Item field.", this);
             }
         }
     }
 
-    public void BuyCheapCrate()
+    public void BuyExpensiveCrate()
     {
         if (!CanPurchase())
             return;
@@ -61,7 +61,7 @@ public class CheapCrateCatalogueUI : MonoBehaviour
     {
         if (playerGold == null || playerInventory == null)
         {
-            Debug.LogError("CheapCrateCatalogueUI: Missing PlayerGold or PlayerInventory reference.", this);
+            Debug.LogError("ExpensiveCrateCatalogueUI: Missing PlayerGold or PlayerInventory reference.", this);
             return false;
         }
 
@@ -70,14 +70,14 @@ public class CheapCrateCatalogueUI : MonoBehaviour
             oreItem = ResolveDefaultOreItem();
             if (oreItem == null)
             {
-                Debug.LogError("CheapCrateCatalogueUI: oreItem is not assigned and no default was found.", this);
+                Debug.LogError("ExpensiveCrateCatalogueUI: oreItem is not assigned and no default was found.", this);
                 return false;
             }
         }
 
         if (playerGold.CurrentGold < cratePrice)
         {
-            Debug.Log("CheapCrateCatalogueUI: Not enough gold to purchase this crate.");
+            Debug.Log("ExpensiveCrateCatalogueUI: Not enough gold to purchase this crate.");
             return false;
         }
 
@@ -88,7 +88,7 @@ public class CheapCrateCatalogueUI : MonoBehaviour
         var gameManager = FindFirstObjectByType<GameManager>();
         if (gameManager != null && gameManager.ironOreItem != null)
         {
-            Debug.Log("CheapCrateCatalogueUI: Auto-linked ore item from GameManager.", this);
+            Debug.Log("ExpensiveCrateCatalogueUI: Auto-linked ore item from GameManager.", this);
             return gameManager.ironOreItem;
         }
 

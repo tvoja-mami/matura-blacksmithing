@@ -44,6 +44,11 @@ public class InventoryUI : MonoBehaviour
         }
 
         // Initial UI update if we have an inventory reference
+        if (playerInventory == null)
+        {
+            playerInventory = FindFirstObjectByType<PlayerInventory>();
+        }
+
         if (playerInventory != null)
         {
             UpdateInventoryUI(playerInventory);
@@ -53,9 +58,18 @@ public class InventoryUI : MonoBehaviour
     // Called whenever the inventory changes (through the event system)
     private void HandleInventoryChanged()
     {
+        if (playerInventory == null)
+        {
+            playerInventory = FindFirstObjectByType<PlayerInventory>();
+        }
+
         if (playerInventory != null)
         {
             UpdateInventoryUI(playerInventory);
+        }
+        else
+        {
+            Debug.LogWarning("InventoryUI: PlayerInventory reference missing; cannot refresh UI on change.");
         }
     }
 
