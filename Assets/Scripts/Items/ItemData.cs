@@ -8,4 +8,5 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public int baseValue;
     public string description;
+    public int quantity;
 }
