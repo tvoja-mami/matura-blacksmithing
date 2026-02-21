@@ -101,9 +101,7 @@ public class GameManager : MonoBehaviour
         OnTimeChanged?.Invoke(currentTime, dayNumber);
     }
 
-    /// <summary>
-    /// Called by UI/button/input when the player confirms they want to advance to the next day.
-    /// </summary>
+    //nov dan
     public void AdvanceToNextDay()
     {
         if (!isWaitingForNextDay)
