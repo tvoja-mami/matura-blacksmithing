@@ -22,10 +22,39 @@ public class GameManager : MonoBehaviour
     [Header("Time Pause")]
     [Tooltip("True when time has reached dayStopHour and is waiting for user action to advance.")]
     [SerializeField] private bool isWaitingForNextDay = false;
+
+    [Header("Camera Follow")]
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 cameraOffset = new(0f, 0f, -10f);
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (playerTransform == null)
+        {
+            PlayerMovement movementPlayer = FindFirstObjectByType<PlayerMovement>();
+            if (movementPlayer != null)
+            {
+                playerTransform = movementPlayer.transform;
+            }
+            else
+            {
+                PlayerInteractor2D interactorPlayer = FindFirstObjectByType<PlayerInteractor2D>();
+                if (interactorPlayer != null)
+                {
+                    playerTransform = interactorPlayer.transform;
+                }
+                else
+                {
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    if (playerObject != null)
+                    {
+                        playerTransform = playerObject.transform;
+                    }
+                }
+            }
+        }
+
         if (playerInventory == null)
         {
             playerInventory = FindFirstObjectByType<PlayerInventory>();
@@ -76,6 +105,11 @@ public class GameManager : MonoBehaviour
         UpdateTime();
     }
 
+    private void LateUpdate()
+    {
+        FollowPlayerWithCamera();
+    }
+
 
 //čas
 
@@ -99,6 +133,22 @@ public class GameManager : MonoBehaviour
         }
 
         OnTimeChanged?.Invoke(currentTime, dayNumber);
+    }
+
+    private void FollowPlayerWithCamera()
+    {
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            return;
+        }
+
+        mainCamera.transform.position = playerTransform.position + cameraOffset;
     }
 
     //nov dan
