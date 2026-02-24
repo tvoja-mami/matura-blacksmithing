@@ -1,24 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMOvement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
-    private float moveSpeed = 100f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Movement Settings")]
+    [SerializeField] Rigidbody2D rb;
+    [Header("Input Settings")]
+    [SerializeField] float moveSpeed;
+    private float horizontalInput;
+    private float verticalInput;
+    private void FixedUpdate()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        rb.linearVelocity = moveInput * moveSpeed;
-    }
     public void Move(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        Vector2 inputVector = context.ReadValue<Vector2>();
+        horizontalInput = inputVector.x;
+        verticalInput = inputVector.y;
     }
 }
