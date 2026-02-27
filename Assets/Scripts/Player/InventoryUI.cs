@@ -16,6 +16,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private PlayerInventory playerInventory;
 
+    private bool IsConfigured => slotPrefab != null && contentParent != null;
+
     private void OnEnable()
     {
         PlayerInventory.OnInventoryChanged += HandleInventoryChanged;
@@ -28,115 +30,50 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        // Validate required references
-        if (slotPrefab == null)
+        if (!IsConfigured)
         {
-            Debug.LogError("InventoryUI: slotPrefab reference is missing!");
+            Debug.LogError("InventoryUI: Missing required references (slotPrefab/contentParent).");
             enabled = false;
             return;
         }
 
-        if (contentParent == null)
-        {
-            Debug.LogError("InventoryUI: contentParent reference is missing!");
-            enabled = false;
-            return;
-        }
-
-        // Initial UI update if we have an inventory reference
-        if (playerInventory == null)
-        {
-            playerInventory = FindFirstObjectByType<PlayerInventory>();
-        }
-
+        playerInventory ??= FindFirstObjectByType<PlayerInventory>();
         if (playerInventory != null)
-        {
             UpdateInventoryUI(playerInventory);
-        }
     }
 
-    // Called whenever the inventory changes (through the event system)
     private void HandleInventoryChanged()
     {
-        if (playerInventory == null)
-        {
-            playerInventory = FindFirstObjectByType<PlayerInventory>();
-        }
+        playerInventory ??= FindFirstObjectByType<PlayerInventory>();
 
         if (playerInventory != null)
-        {
             UpdateInventoryUI(playerInventory);
-        }
-        else
-        {
-            Debug.LogWarning("InventoryUI: PlayerInventory reference missing; cannot refresh UI on change.");
-        }
     }
 
-    /// <summary>
-    /// Updates the entire inventory UI display with the current inventory contents
-    /// </summary>
-    /// <param name="inventory">The PlayerInventory to display</param>
     public void UpdateInventoryUI(PlayerInventory inventory)
     {
-        if (inventory == null)
+        if (inventory == null || !IsConfigured)
         {
-            Debug.LogWarning("InventoryUI: Attempted to update with null inventory!");
             return;
         }
 
-        // Cache the inventory reference for event handling
         playerInventory = inventory;
-
-        // Clear existing slots
         ClearInventorySlots(contentParent);
 
-        // Create slots for all items with quantity > 0
         foreach (var itemEntry in inventory.items)
         {
             ItemData item = itemEntry.Key;
             int quantity = itemEntry.Value;
 
-            if (quantity <= 0) continue;
+            if (quantity <= 0 || item == null)
+                continue;
 
-            // Instantiate a new slot
             GameObject newSlot = Instantiate(slotPrefab, contentParent);
-            
-            // Try to get the InventoryItem component from the instantiated slot
-            InventoryItem itemUI = newSlot.GetComponent<InventoryItem>();
-
-            if (itemUI == null)
-            {
-                // Fallback: if the prefab doesn't have the InventoryItem script,
-                // create one on the instantiated object and try to wire basic UI children.
-                itemUI = newSlot.AddComponent<InventoryItem>();
-
-                // Try to auto-find an Image and a TextMeshProUGUI in children
-                var image = newSlot.GetComponentInChildren<Image>();
-                var tmp = newSlot.GetComponentInChildren<TextMeshProUGUI>();
-
-                if (image != null)
-                {
-                    itemUI.iconImage = image;
-                }
-                if (tmp != null)
-                {
-                    itemUI.quantityText = tmp;
-                }
-                // nameText is optional; try to find a second TMP (if present)
-                var allTmps = newSlot.GetComponentsInChildren<TextMeshProUGUI>();
-                if (allTmps != null && allTmps.Length > 1)
-                {
-                    itemUI.nameText = allTmps.FirstOrDefault(t => t != itemUI.quantityText);
-                }
-            }
+            InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
             {
-                // Update the slot with item data
                 itemUI.item = item;
-
-                // Force an immediate refresh of the slot's UI
                 itemUI.RefreshUI();
             }
             else
@@ -145,21 +82,30 @@ public class InventoryUI : MonoBehaviour
                 Destroy(newSlot);
             }
         }
-        Debug.Log("InventoryUI: UI updated with current inventory contents.");
     }
 
-    /// <summary>
-    /// Safely destroys all child slot objects in the content parent
-    /// </summary>
+    private InventoryItem GetOrCreateInventoryItem(GameObject slot)
+    {
+        InventoryItem itemUI = slot.GetComponent<InventoryItem>() ?? slot.AddComponent<InventoryItem>();
+
+        itemUI.iconImage ??= slot.GetComponentInChildren<Image>();
+        itemUI.quantityText ??= slot.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (itemUI.nameText == null)
+        {
+            var allTmps = slot.GetComponentsInChildren<TextMeshProUGUI>();
+            if (allTmps != null && allTmps.Length > 1)
+                itemUI.nameText = allTmps.FirstOrDefault(t => t != itemUI.quantityText);
+        }
+
+        return itemUI;
+    }
+
     private void ClearInventorySlots(Transform gridContent)
     {
         if (gridContent == null) return;
 
-        // Cache children count as it can change during destruction
-        int childCount = gridContent.childCount;
-        
-        // Destroy from last to first to avoid reindexing issues
-        for (int i = childCount - 1; i >= 0; i--)
+        for (int i = gridContent.childCount - 1; i >= 0; i--)
         {
             Transform child = gridContent.GetChild(i);
             if (Application.isPlaying)

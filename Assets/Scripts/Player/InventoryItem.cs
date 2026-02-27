@@ -58,10 +58,6 @@ public class InventoryItem : MonoBehaviour
                 nameText = nameTransform.GetComponent<TextMeshProUGUI>();
         }
     }
-
-    /// <summary>
-    /// Updates the slot's visual elements based on the current item
-    /// </summary>
     public void RefreshUI()
     {
         if (item != null && playerInventory != null)
@@ -108,16 +104,6 @@ public class InventoryItem : MonoBehaviour
             }
 
             if (nameText != null) nameText.text = "";
-        }
-    }
-
-    // Optional: Add click handling
-    public void OnSlotClicked()
-    {
-        if (item != null)
-        {
-            Debug.Log($"Clicked on {item.itemName}");
-            // Add your click handling logic here
         }
     }
 }

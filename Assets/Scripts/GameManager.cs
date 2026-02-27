@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public PlayerInventory playerInventory;
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
     [Header("Camera Follow")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Vector3 cameraOffset = new(0f, 0f, -10f);
+
+    [Header("UI")]
+    [Tooltip("Optional text used for interaction prompts.")]
+    [SerializeField] private TextMeshProUGUI controlText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -103,6 +108,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateTime();
+        while (Bed.ConsumeTrigger())
+        {
+            if (controlText != null)
+            {
+                controlText.text = "Press [E] to advance to the next day";
+            }
+        }
     }
 
     private void LateUpdate()
