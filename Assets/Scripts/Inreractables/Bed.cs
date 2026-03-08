@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bed : MonoBehaviour, IInteractable
 {
     [SerializeField] private string prompt = "[E] to Sleep";
+
     private static bool isTriggered;
     public static bool IsTriggered
     {

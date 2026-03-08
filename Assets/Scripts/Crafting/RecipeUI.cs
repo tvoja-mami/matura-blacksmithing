@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,12 +39,20 @@ public class RecipeUI : MonoBehaviour
 
         if (buttontText != null)
         {
-            buttontText.text = recipeData != null ? recipeData.recipeName : "Missing Recipe";
+            buttontText.text = data.recipeName;
         }
 
         if (button != null)
         {
             button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(OnRecipeClicked);
         }
+    }
+
+    public void OnRecipeClicked()
+    {
+        if (recipeData == null || forgeUI == null) return;
+
+        forgeUI.SelectRecipe(recipeData);
     }
 }

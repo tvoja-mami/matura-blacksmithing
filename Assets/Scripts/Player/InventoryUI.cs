@@ -32,8 +32,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (!IsConfigured)
         {
-            Debug.LogError("InventoryUI: Missing required references (slotPrefab/contentParent).");
-            enabled = false;
+            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (slotPrefab/contentParent). Skipping.");
             return;
         }
 

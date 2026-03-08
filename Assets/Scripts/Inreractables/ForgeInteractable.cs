@@ -10,7 +10,7 @@ public class ForgeInteractable : MonoBehaviour, IInteractable
     {
         if (forgeUI == null)
         {
-            forgeUI = FindFirstObjectByType<ForgeUI>();
+            forgeUI = FindFirstObjectByType<ForgeUI>(FindObjectsInactive.Include);
         }
     }
 
@@ -18,6 +18,8 @@ public class ForgeInteractable : MonoBehaviour, IInteractable
     {
         if (forgeUI == null) return;
 
+        // Ensure the GameObject is active so ForgeUI can run.
+        forgeUI.gameObject.SetActive(true);
         forgeUI.ToggleForge();
     }
 

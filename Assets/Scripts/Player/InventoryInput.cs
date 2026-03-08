@@ -78,6 +78,14 @@ public class InventoryInput : MonoBehaviour
 
     private void SetInventoryVisible(bool visible)
     {
+        if (isInventoryOpen != visible)
+        {
+            if (visible)
+                PlayerMovement.ActiveMenuCount++;
+            else
+                PlayerMovement.ActiveMenuCount--;
+        }
+
         isInventoryOpen = visible;
 
         if (canvasGroup != null)

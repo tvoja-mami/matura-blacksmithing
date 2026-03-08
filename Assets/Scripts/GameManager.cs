@@ -108,12 +108,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateTime();
-        while (Bed.ConsumeTrigger())
+        if (Bed.ConsumeTrigger())
         {
-            if (controlText != null)
-            {
-                controlText.text = "Press [E] to advance to the next day";
-            }
+            Debug.Log("Bed trigger consumed — advancing to next day.");
+            AdvanceToNextDay();
         }
     }
 
