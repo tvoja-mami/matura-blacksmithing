@@ -16,8 +16,17 @@ public class ForgeUI : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject forgePanel;
     [SerializeField] private TextMeshProUGUI selectedRecipeText;
+
+    [Header("Item Detail Panel")]
+    [SerializeField] private GameObject itemDetailPanel;
     [SerializeField] private Image itemDetailIcon;
-    [SerializeField] private TextMeshProUGUI itemDetailText;
+    [SerializeField] private TextMeshProUGUI itemDetailName;
+    [SerializeField] private TextMeshProUGUI itemDetailDescription;
+
+    public GameObject ItemDetailPanel => itemDetailPanel;
+    public Image ItemDetailIcon => itemDetailIcon;
+    public TextMeshProUGUI ItemDetailName => itemDetailName;
+    public TextMeshProUGUI ItemDetailDescription => itemDetailDescription;
 
     private bool isForgeOpen;
 
@@ -48,12 +57,6 @@ public class ForgeUI : MonoBehaviour
         if (selectedRecipeText != null)
             selectedRecipeText.text = recipe != null ? recipe.recipeName : "";
 
-        if (recipe != null && recipe.outputItem != null)
-        {
-            if (itemDetailIcon != null) itemDetailIcon.sprite = recipe.outputItem.icon;
-            if (itemDetailText != null) itemDetailText.text = recipe.outputItem.description;
-        }
-
         ShowRequiredItems(recipe);
     }
 
@@ -66,7 +69,9 @@ public class ForgeUI : MonoBehaviour
             GameObject buttonObj = Instantiate(recipeButtonPrefab, recipeButtonContainer);
             RecipeUI recipeUI = buttonObj.GetComponent<RecipeUI>();
             if (recipeUI != null)
-                recipeUI.Initialize(recipe, this);
+                recipeUI.Initialize(recipe, this,
+                    itemDetailPanel, itemDetailIcon,
+                    itemDetailName, itemDetailDescription);
         }
     }
 
@@ -74,6 +79,7 @@ public class ForgeUI : MonoBehaviour
     {
         ClearChildren(requiredItemsContainer);
         if (selectedRecipeText != null) selectedRecipeText.text = "";
+        if (itemDetailPanel != null) itemDetailPanel.SetActive(false);
     }
 
     private void ShowRequiredItems(RecipeData recipe)
