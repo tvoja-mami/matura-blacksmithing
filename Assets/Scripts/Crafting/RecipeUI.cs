@@ -10,7 +10,6 @@ public class RecipeUI : MonoBehaviour
     [Header("Item Detail Panel")]
     [SerializeField] private GameObject itemDetailPanel;
     [SerializeField] private Image itemDetailIcon;
-    [SerializeField] private TextMeshProUGUI itemDetailName;
     [SerializeField] private TextMeshProUGUI itemDetailDescription;
 
     private RecipeData recipeData;
@@ -31,8 +30,12 @@ public class RecipeUI : MonoBehaviour
 
         this.itemDetailPanel = detailPanel;
         this.itemDetailIcon = detailIcon;
-        this.itemDetailName = detailName;
         this.itemDetailDescription = detailDescription;
+
+        if (detailPanel == null) Debug.LogError("detailPanel is null — assign Item Detail Panel on ForgeUI!");
+        if (detailIcon == null) Debug.LogError("detailIcon is null — assign Item Detail Icon on ForgeUI!");
+        if (detailName == null) Debug.LogError("detailName is null — assign Item Detail Name on ForgeUI!");
+        if (detailDescription == null) Debug.LogError("detailDescription is null — assign Item Detail Description on ForgeUI!");
 
         buttonText.text = data.recipeName;
 
@@ -49,11 +52,15 @@ public class RecipeUI : MonoBehaviour
     private void ShowItemDetail()
     {
         ItemData output = recipeData.outputItem;
+        if (output == null)
+        {
+            Debug.LogWarning($"Recipe '{recipeData.recipeName}' has no output item assigned!");
+            return;
+        }
 
         itemDetailPanel.SetActive(true);
         itemDetailIcon.sprite = output.icon;
         itemDetailIcon.enabled = output.icon != null;
-        itemDetailName.text = output.itemName;
         itemDetailDescription.text = output.description;
     }
 
