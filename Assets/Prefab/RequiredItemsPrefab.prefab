@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1055212685303616639}
   - component: {fileID: 3955688362160032942}
   - component: {fileID: 6650772656797457508}
-  m_Layer: 4
+  m_Layer: 5
   m_Name: RequiredItemsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4453283310781054578}
   - component: {fileID: 107731999996004595}
   - component: {fileID: 3621404357827185671}
-  m_Layer: 4
+  m_Layer: 5
   m_Name: RequiredItems_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
