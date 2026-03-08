@@ -10,6 +10,7 @@ public class RecipeUI : MonoBehaviour
     [Header("Item Detail Panel")]
     [SerializeField] private GameObject itemDetailPanel;
     [SerializeField] private Image itemDetailIcon;
+    [SerializeField] private TextMeshProUGUI itemDetailName;
     [SerializeField] private TextMeshProUGUI itemDetailDescription;
 
     private RecipeData recipeData;
@@ -30,6 +31,7 @@ public class RecipeUI : MonoBehaviour
 
         this.itemDetailPanel = detailPanel;
         this.itemDetailIcon = detailIcon;
+        this.itemDetailName = detailName;
         this.itemDetailDescription = detailDescription;
 
         if (detailPanel == null) Debug.LogError("detailPanel is null — assign Item Detail Panel on ForgeUI!");
@@ -62,6 +64,7 @@ public class RecipeUI : MonoBehaviour
         itemDetailIcon.sprite = output.icon;
         itemDetailIcon.enabled = output.icon != null;
         itemDetailDescription.text = output.description;
+        itemDetailName.text = output.itemName;
     }
 
     public void HideItemDetail()
