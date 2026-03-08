@@ -58,6 +58,27 @@ public class InventoryItem : MonoBehaviour
                 nameText = nameTransform.GetComponent<TextMeshProUGUI>();
         }
     }
+    /// <summary>Display a crafted item instance with rarity colour on the name.</summary>
+    public void RefreshAsCraftedItem(CraftedItem craftedItem)
+    {
+        item = craftedItem.item;
+
+        if (iconImage != null)
+        {
+            iconImage.sprite  = item.icon;
+            iconImage.enabled = item.icon != null;
+        }
+
+        if (nameText != null)
+        {
+            nameText.text  = $"{item.itemName} [{RarityHelper.GetName(craftedItem.rarity)}]";
+            nameText.color = RarityHelper.GetColor(craftedItem.rarity);
+        }
+
+        if (quantityText != null)
+            quantityText.text = $"{craftedItem.GetSellValue()}g";
+    }
+
     public void RefreshUI()
     {
         if (item != null && playerInventory != null)

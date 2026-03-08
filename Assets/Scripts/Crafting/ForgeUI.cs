@@ -28,13 +28,20 @@ public class ForgeUI : MonoBehaviour
     public TextMeshProUGUI ItemDetailName => itemDetailName;
     public TextMeshProUGUI ItemDetailDescription => itemDetailDescription;
 
+    [Header("Crafting Mini-game")]
+    [SerializeField] private CraftingMinigame craftingMinigame;
+    [SerializeField] private Button craftButton;
+
     private bool isForgeOpen;
+    private RecipeData selectedRecipe;
 
     public void OpenForge()
     {
         isForgeOpen = true;
         forgePanel.SetActive(true);
         PlayerMovement.ActiveMenuCount++;
+        selectedRecipe = null;
+        if (craftButton != null) craftButton.interactable = false;
         ClearSelectedRecipe();
         PopulateRecipeList();
     }
@@ -54,10 +61,27 @@ public class ForgeUI : MonoBehaviour
 
     public void SelectRecipe(RecipeData recipe)
     {
+        selectedRecipe = recipe;
+
         if (selectedRecipeText != null)
             selectedRecipeText.text = recipe != null ? recipe.recipeName : "";
 
+        if (craftButton != null)
+            craftButton.interactable = recipe != null;
+
         ShowRequiredItems(recipe);
+    }
+
+    /// <summary>Called by the CraftButton onClick event in the Inspector.</summary>
+    public void TryCraft()
+    {
+        if (craftingMinigame == null)
+        {
+            Debug.LogError("ForgeUI: CraftingMinigame reference not assigned!");
+            return;
+        }
+
+        craftingMinigame.StartCraft(selectedRecipe);
     }
 
     private void PopulateRecipeList()

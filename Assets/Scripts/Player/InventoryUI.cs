@@ -59,6 +59,7 @@ public class InventoryUI : MonoBehaviour
         playerInventory = inventory;
         ClearInventorySlots(contentParent);
 
+        // Stackable materials
         foreach (var itemEntry in inventory.items)
         {
             ItemData item = itemEntry.Key;
@@ -80,6 +81,20 @@ public class InventoryUI : MonoBehaviour
                 Debug.LogError($"InventoryUI: Failed to create or find InventoryItem component for Item: {item.name}");
                 Destroy(newSlot);
             }
+        }
+
+        // Individual crafted items — each shown separately with rarity
+        foreach (CraftedItem craftedItem in inventory.craftedItems)
+        {
+            if (craftedItem?.item == null) continue;
+
+            GameObject newSlot = Instantiate(slotPrefab, contentParent);
+            InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
+
+            if (itemUI != null)
+                itemUI.RefreshAsCraftedItem(craftedItem);
+            else
+                Destroy(newSlot);
         }
     }
 
