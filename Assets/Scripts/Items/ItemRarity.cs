@@ -29,6 +29,16 @@ public static class RarityHelper
         _                    => Color.white
     };
 
+    /// <summary>Muted background tint per rarity tier.</summary>
+    public static Color GetBackgroundColor(ItemRarity rarity) => rarity switch
+    {
+        ItemRarity.Common    => new Color(0.85f, 0.85f, 0.85f),        // light grey
+        ItemRarity.Uncommon  => new Color(0.7f,  0.92f, 0.7f),         // soft green
+        ItemRarity.Rare      => new Color(0.7f,  0.78f, 1f),           // soft blue
+        ItemRarity.Legendary => new Color(1f,    0.85f, 0.5f),         // soft gold
+        _                    => new Color(0.85f, 0.85f, 0.85f)
+    };
+
     public static string GetName(ItemRarity rarity) => rarity switch
     {
         ItemRarity.Common    => "Common",

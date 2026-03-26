@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Iron Sword
   itemID: 1
   icon: {fileID: 524607707052518595, guid: abb8908f70bead94a9a2e48b2a8def18, type: 3}
-  baseValue: 0
+  baseValue: 100
   description: Sword made of iron
   quantity: 0

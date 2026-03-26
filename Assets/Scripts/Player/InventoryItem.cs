@@ -71,12 +71,19 @@ public class InventoryItem : MonoBehaviour
 
         if (nameText != null)
         {
-            nameText.text  = $"{item.itemName} [{RarityHelper.GetName(craftedItem.rarity)}]";
-            nameText.color = RarityHelper.GetColor(craftedItem.rarity);
+            nameText.text     = $"{RarityHelper.GetName(craftedItem.rarity)}\n{item.itemName}";
+            nameText.color    = RarityHelper.GetColor(craftedItem.rarity);
+            nameText.fontSize = nameText.fontSize * 0.75f;
+            nameText.enableAutoSizing = false;
         }
 
         if (quantityText != null)
             quantityText.text = $"{craftedItem.GetSellValue()}g";
+
+        // Tint slot background to match rarity
+        Image bg = GetComponent<Image>();
+        if (bg != null)
+            bg.color = RarityHelper.GetBackgroundColor(craftedItem.rarity);
     }
 
     public void RefreshUI()
