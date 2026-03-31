@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,47 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Walls
+    uniqueID: 138963607
+    locked: 0
+  - name: Floor
+    uniqueID: 1444060901
+    locked: 0
+  - name: Props before
+    uniqueID: 2900208819
+    locked: 0
+  - name: Furnace
+    uniqueID: 3785169527
+    locked: 0
+  - name: Rug
+    uniqueID: 1796120851
+    locked: 0
+  - name: Stairs
+    uniqueID: 4014932105
+    locked: 0
+  - name: 'Table '
+    uniqueID: 939671963
+    locked: 0
+  - name: Table props
+    uniqueID: 3970753781
+    locked: 0
+  - name: Ground
+    uniqueID: 1501577611
+    locked: 0
+  - name: Path
+    uniqueID: 2376646471
+    locked: 0
+  - name: Trees
+    uniqueID: 2986968577
+    locked: 0
+  - name: House
+    uniqueID: 4068681953
+    locked: 0
+  - name: Player
+    uniqueID: 1696521319
+    locked: 0
+  - name: Props
+    uniqueID: 1078726305
+    locked: 0
+  m_RenderingLayers:
+  - Default
