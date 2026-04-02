@@ -8,6 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/OutDoor.unity
+    guid: 06cff241427ee5c42a351e28e6054818
+  - enabled: 1
+    path: Assets/Scenes/Bedroom.unity
+    guid: 8569b2cf0e663e34790e3171fcc0769b
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: a9b1514b72dbdb9b6a6128abfb072902, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 67667cd274549e4e880292b4067dc1b0, type: 3}
   m_UseUCBPForAssetBundles: 0
