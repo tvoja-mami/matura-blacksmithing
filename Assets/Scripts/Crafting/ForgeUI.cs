@@ -32,8 +32,32 @@ public class ForgeUI : MonoBehaviour
     [SerializeField] private CraftingMinigame craftingMinigame;
     [SerializeField] private Button craftButton;
 
+    [Header("Progression")]
+    [SerializeField] private PlayerLevel playerLevel;
+
     private bool isForgeOpen;
     private RecipeData selectedRecipe;
+
+    private void Awake()
+    {
+        if (playerLevel == null)
+            playerLevel = FindFirstObjectByType<PlayerLevel>();
+    }
+
+    private void OnEnable()
+    {
+        PlayerLevel.OnLevelUp += HandleLevelUp;
+    }
+
+    private void OnDisable()
+    {
+        PlayerLevel.OnLevelUp -= HandleLevelUp;
+    }
+
+    private void HandleLevelUp(int newLevel)
+    {
+        if (isForgeOpen) PopulateRecipeList();
+    }
 
     public void OpenForge()
     {
@@ -88,8 +112,12 @@ public class ForgeUI : MonoBehaviour
     {
         ClearChildren(recipeButtonContainer);
 
+        int level = playerLevel != null ? playerLevel.CurrentLevel : 1;
+
         foreach (RecipeData recipe in unlockedRecipes)
         {
+            if (recipe.requiredLevel > level) continue;
+
             GameObject buttonObj = Instantiate(recipeButtonPrefab, recipeButtonContainer);
             RecipeUI recipeUI = buttonObj.GetComponent<RecipeUI>();
             if (recipeUI != null)

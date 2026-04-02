@@ -18,7 +18,7 @@ public class RecipeUI : MonoBehaviour
 
     private void Awake()
     {
-        button = GetComponent<Button>();
+        button = GetComponentInChildren<Button>(true);
         buttonText = button.GetComponentInChildren<TextMeshProUGUI>(true);
     }
 

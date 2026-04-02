@@ -71,10 +71,8 @@ public class InventoryItem : MonoBehaviour
 
         if (nameText != null)
         {
-            nameText.text     = $"{RarityHelper.GetName(craftedItem.rarity)}\n{item.itemName}";
-            nameText.color    = RarityHelper.GetColor(craftedItem.rarity);
-            nameText.fontSize = nameText.fontSize * 0.75f;
-            nameText.enableAutoSizing = false;
+            nameText.text  = $"{RarityHelper.GetName(craftedItem.rarity)}\n{item.itemName}";
+            nameText.color = RarityHelper.GetColor(craftedItem.rarity);
         }
 
         if (quantityText != null)

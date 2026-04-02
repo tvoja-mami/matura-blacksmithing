@@ -45,6 +45,7 @@ public class CraftingMinigame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resultItemNameText;
     [SerializeField] private TextMeshProUGUI resultGradeText;
     [SerializeField] private TextMeshProUGUI resultRarityText;
+    [SerializeField] private TextMeshProUGUI resultXPText;
 
     [Header("Settings")]
     [SerializeField] private float gameDuration = 30f;
@@ -63,6 +64,7 @@ public class CraftingMinigame : MonoBehaviour
 
     [Header("Dependencies")]
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private PlayerLevel playerLevel;
 
     // ── State ──────────────────────────────────────────────────────────────────
     private RecipeData    currentRecipe;
@@ -78,6 +80,9 @@ public class CraftingMinigame : MonoBehaviour
     {
         if (playerInventory == null)
             playerInventory = FindFirstObjectByType<PlayerInventory>();
+
+        if (playerLevel == null)
+            playerLevel = FindFirstObjectByType<PlayerLevel>();
 
         gamePanel.SetActive(false);
         resultPanel.SetActive(false);
@@ -194,17 +199,21 @@ public class CraftingMinigame : MonoBehaviour
         gameActive = false;
         hitArrow.SetActive(false);
 
-        ItemRarity rarity = RarityHelper.RollRarity(qualityResult.qualityPercentage);
+        int luck = playerLevel != null ? playerLevel.Luck : 0;
+        ItemRarity rarity = RarityHelper.RollRarity(qualityResult.qualityPercentage, luck);
 
         ConsumeMaterials(currentRecipe);
         playerInventory.AddItemWithRarity(currentRecipe.outputItem, 1, rarity);
 
-        Debug.Log($"Craft complete — {currentRecipe.outputItem.itemName} | {qualityResult} | Rarity: {RarityHelper.GetName(rarity)}");
+        int xpGained = Mathf.RoundToInt(currentRecipe.craftXP * RarityHelper.GetXPMultiplier(rarity));
+        playerLevel?.AddXP(xpGained);
 
-        ShowResultPanel(rarity);
+        Debug.Log($"Craft complete — {currentRecipe.outputItem.itemName} | {qualityResult} | Rarity: {RarityHelper.GetName(rarity)} | XP gained: {xpGained}");
+
+        ShowResultPanel(rarity, xpGained);
     }
 
-    private void ShowResultPanel(ItemRarity rarity)
+    private void ShowResultPanel(ItemRarity rarity, int xpGained)
     {
         gamePanel.SetActive(false);
         resultPanel.SetActive(true);
@@ -220,6 +229,9 @@ public class CraftingMinigame : MonoBehaviour
             resultRarityText.text  = RarityHelper.GetName(rarity);
             resultRarityText.color = RarityHelper.GetColor(rarity);
         }
+
+        if (resultXPText != null)
+            resultXPText.text = $"+{xpGained} XP";
     }
 
     private void ShowFeedback(HitQuality quality)
