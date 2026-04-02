@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gold sword
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gold Sword
-  itemID: 2
+  itemID: 31
   icon: {fileID: 0}
-  baseValue: 0
+  baseValue: 500
   description: 
   quantity: 0

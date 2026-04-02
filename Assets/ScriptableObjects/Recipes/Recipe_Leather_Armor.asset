@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b6e2e9261da194eb9600976756f006, type: 3}
-  m_Name: Recipe_Iron_Axe
+  m_Name: Recipe_Leather_Armor
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  recipeName: Iron Axe
-  recipeID: 103
+  recipeName: Leather Armor
+  recipeID: 205
   requiredMaterials:
-  - item: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
-    amount: 7
-  - item: {fileID: 11400000, guid: 29dd69712a1e4e115a83a68e13797761, type: 2}
-    amount: 2
+  - item: {fileID: 11400000, guid: 188d56f31a3c7494c9eb76503398a7d1, type: 2}
+    amount: 6
   - item: {fileID: 11400000, guid: fb3dec866d6581641a015c1816df1bd6, type: 2}
-    amount: 1
-  outputItem: {fileID: 11400000, guid: 138468017b680eb9f91693e2916c967e, type: 2}
-  requiredLevel: 2
-  unlockCost: 0
-  craftXP: 20
+    amount: 2
+  outputItem: {fileID: 11400000, guid: e81ab4c557084f046ac4a645f483e506, type: 2}
+  requiredLevel: 5
+  unlockCost: 150
+  craftXP: 50

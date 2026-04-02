@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b6e2e9261da194eb9600976756f006, type: 3}
-  m_Name: Recipe_Iron_Axe
+  m_Name: Recipe_Steel_Spear
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  recipeName: Iron Axe
-  recipeID: 103
+  recipeName: Steel Spear
+  recipeID: 203
   requiredMaterials:
   - item: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
-    amount: 7
+    amount: 4
+  - item: {fileID: 11400000, guid: 73c2330d7bb290c429e8484bcf38ea20, type: 2}
+    amount: 3
   - item: {fileID: 11400000, guid: 29dd69712a1e4e115a83a68e13797761, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: fb3dec866d6581641a015c1816df1bd6, type: 2}
     amount: 1
-  outputItem: {fileID: 11400000, guid: 138468017b680eb9f91693e2916c967e, type: 2}
-  requiredLevel: 2
-  unlockCost: 0
-  craftXP: 20
+  outputItem: {fileID: 11400000, guid: cd449b5021cb1b94aba8ad95b989d73c, type: 2}
+  requiredLevel: 4
+  unlockCost: 150
+  craftXP: 50

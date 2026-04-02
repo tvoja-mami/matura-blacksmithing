@@ -1759,6 +1759,143 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439693919}
   m_CullTransparentMesh: 1
+--- !u!1 &445881415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445881418}
+  - component: {fileID: 445881417}
+  - component: {fileID: 445881416}
+  m_Layer: 4
+  m_Name: UnlockInfoText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &445881416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445881415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &445881417
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445881415}
+  m_CullTransparentMesh: 1
+--- !u!224 &445881418
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445881415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 538593196}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 32.2, y: -152.9}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &447450143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,6 +2985,7 @@ RectTransform:
   - {fileID: 506897601}
   - {fileID: 1860482823}
   - {fileID: 67799334}
+  - {fileID: 445881418}
   - {fileID: 2057400474}
   - {fileID: 554260136}
   m_Father: {fileID: 1702072675}
@@ -2909,6 +3047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeUI
   buttonText: {fileID: 0}
   button: {fileID: 0}
+  buttonImage: {fileID: 0}
   itemDetailPanel: {fileID: 538593195}
   itemDetailIcon: {fileID: 67799335}
   itemDetailName: {fileID: 0}
@@ -4337,6 +4476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 827851375}
   - component: {fileID: 827851376}
+  - component: {fileID: 827851377}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -4387,6 +4527,20 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!114 &827851377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827851374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &832317341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,6 +5139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940062026}
   - component: {fileID: 940062027}
+  - component: {fileID: 940062028}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -5035,6 +5190,20 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &940062028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940062025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1060809882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6240,6 +6409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeUI
   buttonText: {fileID: 0}
   button: {fileID: 4836892046808640920, guid: fcac536c0c17f602ea217936c23c3709, type: 3}
+  buttonImage: {fileID: 0}
   itemDetailPanel: {fileID: 0}
   itemDetailIcon: {fileID: 0}
   itemDetailName: {fileID: 0}
@@ -6256,9 +6426,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8a0db59d01ec3f1999e8fa968db110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ForgeUI
-  unlockedRecipes:
-  - {fileID: 11400000, guid: 096695809af79d961b7b6f5c9d37c52b, type: 2}
+  allRecipes:
+  - {fileID: 11400000, guid: 488a0a1bfdeffd6498386c5edaf64eec, type: 2}
+  - {fileID: 11400000, guid: 46475843cee26d442ab97940f731e9b1, type: 2}
+  - {fileID: 11400000, guid: ab663eb9e1ac83441ab5b15d385a43da, type: 2}
+  - {fileID: 11400000, guid: 8de215e843c428547ad7162b0941b918, type: 2}
+  - {fileID: 11400000, guid: 468abc6f71954bf45a773b9d8fe3db21, type: 2}
   - {fileID: 11400000, guid: 2748222dc44adb2f48d7400d2a8271a9, type: 2}
+  - {fileID: 11400000, guid: f860d30863924ad4fad855399149db69, type: 2}
+  - {fileID: 11400000, guid: de543600a54c7d44aaa48c5a4617f9d6, type: 2}
+  - {fileID: 11400000, guid: 096695809af79d961b7b6f5c9d37c52b, type: 2}
+  - {fileID: 11400000, guid: a2bb76d0f4a727c4489e0f368a30f638, type: 2}
+  - {fileID: 11400000, guid: 3c31c2e67121adc45a75637a69cd2506, type: 2}
+  - {fileID: 11400000, guid: 58d8a2f81ca90c14eadf6ed61e837f67, type: 2}
+  - {fileID: 11400000, guid: 6c81ac928c124704790c9475f732a60d, type: 2}
+  - {fileID: 11400000, guid: 209e1b0f10e0b2f4c8d849689129f6e6, type: 2}
+  - {fileID: 11400000, guid: d1ac1c0fb4a595e42a5fcc939e87efa9, type: 2}
+  - {fileID: 11400000, guid: d2e0b2209f44550409a70f205f4f554a, type: 2}
+  - {fileID: 11400000, guid: 45554d031fd7eb144b04f243b4b583f3, type: 2}
+  - {fileID: 11400000, guid: 0db61c64aff13864398d9d72308b1f9d, type: 2}
+  - {fileID: 11400000, guid: ae54cc4a0eb236c4eb6b50b1e486e246, type: 2}
+  - {fileID: 11400000, guid: 57d93a08285380e4f9fee5489c876f24, type: 2}
+  - {fileID: 11400000, guid: cff38ee4bfaeae84db5248b5b2d987e0, type: 2}
+  - {fileID: 11400000, guid: 0033ff9dc6280994caed6426ec3ca070, type: 2}
+  - {fileID: 11400000, guid: d906093c4ae63aa44b33f848ee9d97c0, type: 2}
   recipeButtonPrefab: {fileID: 7366093981192164592, guid: fcac536c0c17f602ea217936c23c3709, type: 3}
   recipeButtonContainer: {fileID: 940062026}
   requiredItemsPrefab: {fileID: 1703179438545811979, guid: f05298588259c918391fdca6b11028ca, type: 3}
@@ -6269,8 +6460,10 @@ MonoBehaviour:
   itemDetailIcon: {fileID: 67799335}
   itemDetailName: {fileID: 1868708393}
   itemDetailDescription: {fileID: 506897602}
-  craftingMinigame: {fileID: 74937672}
   craftButton: {fileID: 2057400475}
+  craftButtonText: {fileID: 1288146088}
+  unlockInfoText: {fileID: 445881416}
+  craftingMinigame: {fileID: 74937672}
   playerLevel: {fileID: 1932813490}
 --- !u!1 &1288146086
 GameObject:
@@ -7098,6 +7291,7 @@ GameObject:
   - component: {fileID: 1466824020}
   - component: {fileID: 1466824019}
   - component: {fileID: 1466824021}
+  - component: {fileID: 1466824022}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7158,6 +7352,44 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   cameraOffset: {x: 0, y: 0, z: -10}
   controlText: {fileID: 0}
+--- !u!114 &1466824022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466824018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4234c9d8e171744872a3732a49109f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeUnlockManager
+  allRecipes:
+  - {fileID: 11400000, guid: 488a0a1bfdeffd6498386c5edaf64eec, type: 2}
+  - {fileID: 11400000, guid: 46475843cee26d442ab97940f731e9b1, type: 2}
+  - {fileID: 11400000, guid: ab663eb9e1ac83441ab5b15d385a43da, type: 2}
+  - {fileID: 11400000, guid: 8de215e843c428547ad7162b0941b918, type: 2}
+  - {fileID: 11400000, guid: 468abc6f71954bf45a773b9d8fe3db21, type: 2}
+  - {fileID: 11400000, guid: 2748222dc44adb2f48d7400d2a8271a9, type: 2}
+  - {fileID: 11400000, guid: f860d30863924ad4fad855399149db69, type: 2}
+  - {fileID: 11400000, guid: de543600a54c7d44aaa48c5a4617f9d6, type: 2}
+  - {fileID: 11400000, guid: 096695809af79d961b7b6f5c9d37c52b, type: 2}
+  - {fileID: 11400000, guid: a2bb76d0f4a727c4489e0f368a30f638, type: 2}
+  - {fileID: 11400000, guid: 3c31c2e67121adc45a75637a69cd2506, type: 2}
+  - {fileID: 11400000, guid: 58d8a2f81ca90c14eadf6ed61e837f67, type: 2}
+  - {fileID: 11400000, guid: 6c81ac928c124704790c9475f732a60d, type: 2}
+  - {fileID: 11400000, guid: 209e1b0f10e0b2f4c8d849689129f6e6, type: 2}
+  - {fileID: 11400000, guid: d1ac1c0fb4a595e42a5fcc939e87efa9, type: 2}
+  - {fileID: 11400000, guid: d2e0b2209f44550409a70f205f4f554a, type: 2}
+  - {fileID: 11400000, guid: 45554d031fd7eb144b04f243b4b583f3, type: 2}
+  - {fileID: 11400000, guid: 0db61c64aff13864398d9d72308b1f9d, type: 2}
+  - {fileID: 11400000, guid: ae54cc4a0eb236c4eb6b50b1e486e246, type: 2}
+  - {fileID: 11400000, guid: 57d93a08285380e4f9fee5489c876f24, type: 2}
+  - {fileID: 11400000, guid: cff38ee4bfaeae84db5248b5b2d987e0, type: 2}
+  - {fileID: 11400000, guid: 0033ff9dc6280994caed6426ec3ca070, type: 2}
+  - {fileID: 11400000, guid: d906093c4ae63aa44b33f848ee9d97c0, type: 2}
+  playerGold: {fileID: 1839514785}
+  playerLevel: {fileID: 0}
 --- !u!1 &1520596220
 GameObject:
   m_ObjectHideFlags: 0
@@ -8289,6 +8521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeUI
   buttonText: {fileID: 0}
   button: {fileID: 4836892046808640920, guid: fcac536c0c17f602ea217936c23c3709, type: 3}
+  buttonImage: {fileID: 0}
   itemDetailPanel: {fileID: 0}
   itemDetailIcon: {fileID: 0}
   itemDetailName: {fileID: 0}
@@ -8862,7 +9095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1868708392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11464,6 +11697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeUI
   buttonText: {fileID: 0}
   button: {fileID: 4836892046808640920, guid: fcac536c0c17f602ea217936c23c3709, type: 3}
+  buttonImage: {fileID: 0}
   itemDetailPanel: {fileID: 0}
   itemDetailIcon: {fileID: 0}
   itemDetailName: {fileID: 0}
