@@ -21,8 +21,10 @@ public class RecipeData : ScriptableObject
     public ItemData outputItem;
 
     [Header("Progression")]
-    [Tooltip("Minimum player level required to see and use this recipe.")]
+    [Tooltip("Minimum player level required to see this recipe in the unlock shop.")]
     public int requiredLevel = 1;
+    [Tooltip("Gold cost to unlock this recipe. 0 = unlocked from the start.")]
+    public int unlockCost = 0;
     [Tooltip("Base XP awarded on craft. Multiplied by rarity (Common 1×, Uncommon 1.3×, Rare 1.6×, Legendary 2×).")]
     public int craftXP = 20;
 }

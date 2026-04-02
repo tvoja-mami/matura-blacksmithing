@@ -6,6 +6,7 @@ public class RecipeUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private Button button;
+    [SerializeField] private Image buttonImage;
 
     [Header("Item Detail Panel")]
     [SerializeField] private GameObject itemDetailPanel;
@@ -16,30 +17,31 @@ public class RecipeUI : MonoBehaviour
     private RecipeData recipeData;
     private ForgeUI forgeUI;
 
+    private static readonly Color LockedColor = new Color(0.55f, 0.55f, 0.55f, 1f);
+
     private void Awake()
     {
-        button = GetComponentInChildren<Button>(true);
-        buttonText = button.GetComponentInChildren<TextMeshProUGUI>(true);
+        button      = GetComponentInChildren<Button>(true);
+        buttonText  = button.GetComponentInChildren<TextMeshProUGUI>(true);
+        buttonImage = button.GetComponent<Image>();
     }
 
-    public void Initialize(RecipeData data, ForgeUI forgeUI,
+    public void Initialize(RecipeData data, ForgeUI forge, bool isLocked,
         GameObject detailPanel, Image detailIcon,
         TextMeshProUGUI detailName, TextMeshProUGUI detailDescription)
     {
-        this.recipeData = data;
-        this.forgeUI = forgeUI;
+        recipeData = data;
+        forgeUI    = forge;
 
-        this.itemDetailPanel = detailPanel;
-        this.itemDetailIcon = detailIcon;
-        this.itemDetailName = detailName;
-        this.itemDetailDescription = detailDescription;
-
-        if (detailPanel == null) Debug.LogError("detailPanel is null — assign Item Detail Panel on ForgeUI!");
-        if (detailIcon == null) Debug.LogError("detailIcon is null — assign Item Detail Icon on ForgeUI!");
-        if (detailName == null) Debug.LogError("detailName is null — assign Item Detail Name on ForgeUI!");
-        if (detailDescription == null) Debug.LogError("detailDescription is null — assign Item Detail Description on ForgeUI!");
+        itemDetailPanel       = detailPanel;
+        itemDetailIcon        = detailIcon;
+        itemDetailName        = detailName;
+        itemDetailDescription = detailDescription;
 
         buttonText.text = data.recipeName;
+
+        if (isLocked && buttonImage != null)
+            buttonImage.color = LockedColor;
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnRecipeClicked);
@@ -47,28 +49,12 @@ public class RecipeUI : MonoBehaviour
 
     public void OnRecipeClicked()
     {
-        ShowItemDetail();
         forgeUI.SelectRecipe(recipeData);
-    }
-
-    private void ShowItemDetail()
-    {
-        ItemData output = recipeData.outputItem;
-        if (output == null)
-        {
-            Debug.LogWarning($"Recipe '{recipeData.recipeName}' has no output item assigned!");
-            return;
-        }
-
-        itemDetailPanel.SetActive(true);
-        itemDetailIcon.sprite = output.icon;
-        itemDetailIcon.enabled = output.icon != null;
-        itemDetailDescription.text = output.description;
-        itemDetailName.text = output.itemName;
     }
 
     public void HideItemDetail()
     {
-        itemDetailPanel.SetActive(false);
+        if (itemDetailPanel != null)
+            itemDetailPanel.SetActive(false);
     }
 }

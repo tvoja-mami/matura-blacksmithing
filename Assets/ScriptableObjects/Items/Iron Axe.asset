@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Iron Axe
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Iron Axe
-  itemID: 3
+  itemID: 12
   icon: {fileID: 0}
-  baseValue: 10
+  baseValue: 130
   description: Axe made of iron
   quantity: 0
