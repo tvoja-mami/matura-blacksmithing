@@ -9,10 +9,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     private float horizontalInput;
     private float verticalInput;
+
+    /// <summary>
+    /// Number of UI menus currently open. Movement is blocked when > 0.
+    /// </summary>
+    public static int ActiveMenuCount { get; set; }
+
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+        if (ActiveMenuCount > 0)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
     }
 
     public void Move(InputAction.CallbackContext context)

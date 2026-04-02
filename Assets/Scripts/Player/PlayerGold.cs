@@ -61,7 +61,7 @@ public class PlayerGold : MonoBehaviour
     {
         if (goldText != null)
         {
-            goldText.text = "Player gold: " + currentGold;
+            goldText.text = "Gold: " + currentGold;
         }
         if (goldTextCatalogue != null)
         {

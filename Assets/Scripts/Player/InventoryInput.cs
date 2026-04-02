@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Text;
 
 public class InventoryInput : MonoBehaviour
 {
@@ -18,184 +17,101 @@ public class InventoryInput : MonoBehaviour
     public PlayerInventory playerInventory;
     
     private PlayerControls controls;
-    private bool isInventoryOpen = false;
-    private bool inputReady = false;
+    private bool isInventoryOpen;
 
     void Awake()
     {
-        // Initialize controls in Awake (before OnEnable)
         controls = new PlayerControls();
-        Debug.Log("InventoryInput: Controls created in Awake");
     }
 
     void Start()
     {
-        Debug.Log("InventoryInput: Start called");
-        
-        // Auto-find references if not assigned
         if (inventoryUI == null)
             inventoryUI = FindFirstObjectByType<InventoryUI>();
-        
+
         if (playerInventory == null)
             playerInventory = FindFirstObjectByType<PlayerInventory>();
-        
-        // Make sure inventory starts hidden
+
         if (inventoryPanel != null)
         {
-            // Ensure we have a CanvasGroup so we can hide without disabling the GameObject
             if (canvasGroup == null)
             {
                 canvasGroup = inventoryPanel.GetComponent<CanvasGroup>();
                 if (canvasGroup == null)
-                {
                     canvasGroup = inventoryPanel.AddComponent<CanvasGroup>();
-                }
             }
 
-            // Keep panel active so InventoryUI stays subscribed; hide via CanvasGroup
             inventoryPanel.SetActive(true);
-            HideInventory();
-            Debug.Log("InventoryInput: Inventory panel found and hidden via CanvasGroup");
+            SetInventoryVisible(false);
         }
         else
         {
-            Debug.LogError("InventoryInput: inventoryPanel is NOT assigned in Inspector!");
+            Debug.LogWarning("InventoryInput: inventoryPanel is not assigned.");
         }
-
-        inputReady = true;
     }
 
     void OnEnable()
     {
-        if (controls != null)
-        {
-            controls.Gameplay.Enable();
-            controls.Gameplay.OpenInventory.performed += OnOpenInventory;
-            Debug.Log("InventoryInput: Controls enabled and subscribed to OpenInventory");
-        }
+        if (controls == null)
+            return;
+
+        controls.Gameplay.OpenInventory.performed += OnOpenInventory;
+        controls.Gameplay.Enable();
     }
 
     void OnDisable()
     {
-        if (controls != null)
-        {
-            controls.Gameplay.Disable();
-            controls.Gameplay.OpenInventory.performed -= OnOpenInventory;
-        }
+        if (controls == null)
+            return;
+
+        controls.Gameplay.OpenInventory.performed -= OnOpenInventory;
+        controls.Gameplay.Disable();
     }
 
     private void OnOpenInventory(InputAction.CallbackContext context)
     {
-        if (!inputReady)
-            return;
-
-        Debug.Log("OnOpenInventory called!");
-        
         if (inventoryPanel == null)
-        {
-            Debug.LogWarning("InventoryInput: inventoryPanel is not assigned!");
             return;
-        }
 
-        // Toggle inventory visibility
-        isInventoryOpen = !isInventoryOpen;
-        
-        if (isInventoryOpen)
-        {
-            ShowInventory();
-        }
-        else
-        {
-            HideInventory();
-        }
-        
-        Debug.Log($"Inventory is now {(isInventoryOpen ? "open" : "closed")}");
+        SetInventoryVisible(!isInventoryOpen);
     }
 
-    private void ShowInventory()
+    private void SetInventoryVisible(bool visible)
     {
+        if (isInventoryOpen != visible)
+        {
+            if (visible)
+                PlayerMovement.ActiveMenuCount++;
+            else
+                PlayerMovement.ActiveMenuCount--;
+        }
+
+        isInventoryOpen = visible;
+
         if (canvasGroup != null)
         {
-            // Use CanvasGroup for smoother control
-            canvasGroup.alpha = 1f;
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
+            canvasGroup.alpha = visible ? 1f : 0f;
+            canvasGroup.interactable = visible;
+            canvasGroup.blocksRaycasts = visible;
         }
         else
         {
-            // Fallback to SetActive
-            inventoryPanel.SetActive(true);
+            inventoryPanel.SetActive(visible);
         }
-        
-        // Force refresh the inventory UI when opening
-        if (inventoryUI != null && playerInventory != null)
-        {
+
+        if (visible && inventoryUI != null && playerInventory != null)
             inventoryUI.UpdateInventoryUI(playerInventory);
-            Debug.Log("InventoryInput: Refreshed inventory UI");
-        }
-
-        LogInventoryContents();
     }
 
-    private void HideInventory()
-    {
-        isInventoryOpen = false;
-        
-        if (canvasGroup != null)
-        {
-            // Use CanvasGroup - keeps components enabled but invisible
-            canvasGroup.alpha = 0f;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
-        }
-        else
-        {
-            // Fallback to SetActive (last resort)
-            inventoryPanel.SetActive(false);
-        }
-    }
-
-    // Public method to close inventory
     public void CloseInventory()
     {
         if (inventoryPanel != null)
-        {
-            HideInventory();
-        }
+            SetInventoryVisible(false);
     }
 
-    // Public method to open inventory
     public void OpenInventory()
     {
         if (inventoryPanel != null)
-        {
-            isInventoryOpen = true;
-            ShowInventory();
-        }
-    }
-
-    private void LogInventoryContents()
-    {
-        if (playerInventory == null)
-        {
-            Debug.LogWarning("InventoryInput: PlayerInventory reference missing; cannot log inventory contents.");
-            return;
-        }
-
-        if (playerInventory.items == null || playerInventory.items.Count == 0)
-        {
-            Debug.Log("InventoryInput: Inventory dictionary empty when opening inventory.");
-            return;
-        }
-
-        var sb = new StringBuilder();
-        sb.AppendLine("InventoryInput: Inventory contents when opening:");
-        foreach (var entry in playerInventory.items)
-        {
-            string itemName = entry.Key != null ? entry.Key.itemName : "<null ItemData>";
-            sb.AppendLine($" - {itemName}: {entry.Value}");
-        }
-
-        Debug.Log(sb.ToString());
+            SetInventoryVisible(true);
     }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e234bea6c2dafc3933496395a32d6f, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
+  itemName: Wood plank
   itemID: 0
   icon: {fileID: 0}
-  baseValue: 0
-  description: 
+  baseValue: 1
+  description: Just wood
   quantity: 0

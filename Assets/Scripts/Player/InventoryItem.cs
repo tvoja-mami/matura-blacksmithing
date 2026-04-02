@@ -58,10 +58,34 @@ public class InventoryItem : MonoBehaviour
                 nameText = nameTransform.GetComponent<TextMeshProUGUI>();
         }
     }
+    /// <summary>Display a crafted item instance with rarity colour on the name.</summary>
+    public void RefreshAsCraftedItem(CraftedItem craftedItem)
+    {
+        item = craftedItem.item;
 
-    /// <summary>
-    /// Updates the slot's visual elements based on the current item
-    /// </summary>
+        if (iconImage != null)
+        {
+            iconImage.sprite  = item.icon;
+            iconImage.enabled = item.icon != null;
+        }
+
+        if (nameText != null)
+        {
+            nameText.text     = $"{RarityHelper.GetName(craftedItem.rarity)}\n{item.itemName}";
+            nameText.color    = RarityHelper.GetColor(craftedItem.rarity);
+            nameText.fontSize = nameText.fontSize * 0.75f;
+            nameText.enableAutoSizing = false;
+        }
+
+        if (quantityText != null)
+            quantityText.text = $"{craftedItem.GetSellValue()}g";
+
+        // Tint slot background to match rarity
+        Image bg = GetComponent<Image>();
+        if (bg != null)
+            bg.color = RarityHelper.GetBackgroundColor(craftedItem.rarity);
+    }
+
     public void RefreshUI()
     {
         if (item != null && playerInventory != null)
@@ -108,16 +132,6 @@ public class InventoryItem : MonoBehaviour
             }
 
             if (nameText != null) nameText.text = "";
-        }
-    }
-
-    // Optional: Add click handling
-    public void OnSlotClicked()
-    {
-        if (item != null)
-        {
-            Debug.Log($"Clicked on {item.itemName}");
-            // Add your click handling logic here
         }
     }
 }

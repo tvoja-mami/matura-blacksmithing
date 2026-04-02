@@ -72,6 +72,14 @@ public class CatalogueInput : MonoBehaviour
 
     private void SetVisible(bool visible)
     {
+        if (isCatalogueOpen != visible)
+        {
+            if (visible)
+                PlayerMovement.ActiveMenuCount++;
+            else
+                PlayerMovement.ActiveMenuCount--;
+        }
+
         isCatalogueOpen = visible;
 
         if (canvasGroup != null)
