@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -40,6 +40,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 797558589
+    locked: 0
+  - name: Walls
+    uniqueID: 1178199545
+    locked: 0
+  - name: Rug
+    uniqueID: 1279370663
+    locked: 0
+  - name: Behind props
+    uniqueID: 3332473115
+    locked: 0
+  - name: Props
+    uniqueID: 1241566077
+    locked: 0
+  - name: Infront props
+    uniqueID: 2522831251
     locked: 0
   m_RenderingLayers:
   - Default
