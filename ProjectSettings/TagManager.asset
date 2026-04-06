@@ -59,5 +59,8 @@ TagManager:
   - name: Infront props
     uniqueID: 2522831251
     locked: 0
+  - name: Player
+    uniqueID: 1725741315
+    locked: 0
   m_RenderingLayers:
   - Default
