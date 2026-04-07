@@ -177,12 +177,15 @@ public class GameManager : MonoBehaviour
     public void EndDay()
     {
         Debug.Log("Nov dan");
-        currentTime = 8f; 
+        currentTime = 8f;
         dayNumber++;
-        if (dayNumber > 5) 
+        if (dayNumber > 5)
         {
             dayNumber = 1;
         }
+
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame();
 
         OnTimeChanged?.Invoke(currentTime, dayNumber);
     }

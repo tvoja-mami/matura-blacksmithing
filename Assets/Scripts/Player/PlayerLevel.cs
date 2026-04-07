@@ -17,6 +17,13 @@ public class PlayerLevel : MonoBehaviour
     public int CurrentLevel => currentLevel;
     public int CurrentXP => currentXP;
 
+    public void SetLevelAndXP(int level, int xp)
+    {
+        currentLevel = Mathf.Max(1, level);
+        currentXP = Mathf.Max(0, xp);
+        OnXPChanged?.Invoke(currentXP, XPNeededForNextLevel, currentLevel);
+    }
+
     /// <summary>Luck bonus passed to RarityHelper. Caps at LuckCap.</summary>
     public int Luck => Mathf.Min(currentLevel - 1, LuckCap);
 
