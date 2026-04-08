@@ -27,13 +27,13 @@ public static class RarityHelper
     /// <summary>Text/name colour per rarity tier.</summary>
     public static Color GetColor(ItemRarity rarity) => rarity switch
     {
-        ItemRarity.Common    => Color.white,
-        ItemRarity.Uncommon  => Color.green,
-        ItemRarity.Rare      => new Color(0.4f, 0.6f, 1f),    // blue
-        ItemRarity.Epic      => new Color(0.7f, 0.3f, 1f),    // purple
-        ItemRarity.Legendary => new Color(1f,   0.6f, 0f),    // gold
-        ItemRarity.Mythic    => new Color(1f,   0.2f, 0.2f),  // red
-        _                    => Color.white
+        ItemRarity.Common    => new Color(0.6f,  0.6f,  0.6f),   // dark grey
+        ItemRarity.Uncommon  => new Color(0.1f,  0.5f,  0.1f),   // dark green
+        ItemRarity.Rare      => new Color(0.2f,  0.35f, 0.7f),   // dark blue
+        ItemRarity.Epic      => new Color(0.45f, 0.15f, 0.7f),   // dark purple
+        ItemRarity.Legendary => new Color(0.7f,  0.4f,  0f),     // dark gold
+        ItemRarity.Mythic    => new Color(0.7f,  0.1f,  0.1f),   // dark red
+        _                    => new Color(0.6f,  0.6f,  0.6f)
     };
 
     /// <summary>Muted background tint per rarity tier.</summary>

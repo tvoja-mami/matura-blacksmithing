@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Leather
   itemID: 0
-  icon: {fileID: 0}
+  icon: {fileID: -990383436112947517, guid: eeab8fc9c6248514683c20cd2c5f622c, type: 3}
   baseValue: 5
   description: Used for armor and grips
   quantity: 0

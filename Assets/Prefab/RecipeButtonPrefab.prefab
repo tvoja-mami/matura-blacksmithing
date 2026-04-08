@@ -175,7 +175,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 90, y: -30}
-  m_SizeDelta: {x: 160, y: 40}
+  m_SizeDelta: {x: 160, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7220086340673917863
 CanvasRenderer:
@@ -283,7 +283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75114ee6f220f251789be9709c28472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeUI
-  buttontText: {fileID: 893833498482683676}
+  buttonText: {fileID: 0}
   button: {fileID: 4836892046808640920}
-  iconImage: {fileID: 0}
-  descriptionText: {fileID: 0}
+  buttonImage: {fileID: 0}
+  itemDetailPanel: {fileID: 0}
+  itemDetailIcon: {fileID: 0}
+  itemDetailName: {fileID: 0}
+  itemDetailDescription: {fileID: 0}

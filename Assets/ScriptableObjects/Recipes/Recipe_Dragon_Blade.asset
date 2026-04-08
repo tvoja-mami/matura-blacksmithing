@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b6e2e9261da194eb9600976756f006, type: 3}
   m_Name: Recipe_Dragon_Blade
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  recipeName: Dragon_Blade
+  recipeName: Dragon Blade
   recipeID: 404
   requiredMaterials:
-  - item: {fileID: 11400000, guid: d891ec435e7ad8144b4a341f9293b9f1, type: 2}
+  - item: {fileID: 11400000, guid: 8aa763d710ea5b640bfec10a0f9b969b, type: 2}
     amount: 4
   - item: {fileID: 11400000, guid: 758e77c2e037b2949ae57f324b75353b, type: 2}
     amount: 2
