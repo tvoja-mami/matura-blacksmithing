@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6272d8671bbdf3c6bd55c522722efcd, type: 3}
+  m_Name: Legendary Crate
+  m_EditorClassIdentifier: Assembly-CSharp::OreCrate
+  crateType: Legendary
+  cratePrice: 700
+  crateIcon: {fileID: 5647082962776326571, guid: 74c5882ee185be126b123f553b1ea3ed, type: 3}
+  description: The most prestigious crate, involves only the most premium materials
+    at a premium price.
+  drops:
+  - item: {fileID: 11400000, guid: 8aa763d710ea5b640bfec10a0f9b969b, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 758e77c2e037b2949ae57f324b75353b, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 78b8d61cbca15d6469e78daaec7f019f, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 73c2330d7bb290c429e8484bcf38ea20, type: 2}
+    amount: 3
