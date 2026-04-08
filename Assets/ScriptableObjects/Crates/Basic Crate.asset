@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6272d8671bbdf3c6bd55c522722efcd, type: 3}
+  m_Name: Basic Crate
+  m_EditorClassIdentifier: Assembly-CSharp::OreCrate
+  crateType: Basic
+  cratePrice: 30
+  crateIcon: {fileID: -4402984258483700891, guid: e301363383070be3ea903c977a88b23d, type: 3}
+  description: The cheapest and the least desirabable crate, barely worth opening.
+  drops:
+  - item: {fileID: 11400000, guid: 3a753e4eed7004874b84a17c768fb80c, type: 2}
+    amount: 8
+  - item: {fileID: 11400000, guid: 29dd69712a1e4e115a83a68e13797761, type: 2}
+    amount: 4
+  - item: {fileID: 11400000, guid: fb3dec866d6581641a015c1816df1bd6, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 73c2330d7bb290c429e8484bcf38ea20, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 188d56f31a3c7494c9eb76503398a7d1, type: 2}
+    amount: 1

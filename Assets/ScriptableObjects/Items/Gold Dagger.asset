@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gold Dagger
   itemID: 30
-  icon: {fileID: 0}
+  icon: {fileID: -8421697100933174895, guid: 295599ade386d4c4b9c7558e28fd9925, type: 3}
   baseValue: 280
   description: 
   quantity: 0

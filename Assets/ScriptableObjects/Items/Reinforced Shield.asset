@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Reinforced Shield
   itemID: 24
-  icon: {fileID: 0}
+  icon: {fileID: 955381983662023784, guid: 1eef6ef181f69244a9e6cacfc5fad1f7, type: 3}
   baseValue: 220
   description: 
   quantity: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gemstone
   itemID: 7
-  icon: {fileID: 0}
+  icon: {fileID: 680661537081955900, guid: 91d998cc1e993d04bb1b1b24775945d4, type: 3}
   baseValue: 0
   description: Rare gem for ornate items
   quantity: 0
