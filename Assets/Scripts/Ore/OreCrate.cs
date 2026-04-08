@@ -5,6 +5,7 @@ public class OreCrate : ScriptableObject
 {
     public string crateType;
     public int cratePrice;
+    public int requiredLevel = 1;
     public Sprite crateIcon;
     [TextArea] public string description;
 

@@ -34,11 +34,13 @@ public class CrateCatalogueUI : MonoBehaviour
     private void OnEnable()
     {
         PlayerGold.OnGoldChanged += OnGoldChanged;
+        PlayerLevel.OnLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
         PlayerGold.OnGoldChanged -= OnGoldChanged;
+        PlayerLevel.OnLevelUp -= OnLevelUp;
     }
 
     private void Start()
@@ -69,6 +71,11 @@ public class CrateCatalogueUI : MonoBehaviour
         RefreshAffordability();
     }
 
+    private void OnLevelUp(int newLevel)
+    {
+        RefreshAffordability();
+    }
+
     /// <summary>
     /// Disable buttons for crates the player can't afford.
     /// If the currently selected crate is no longer affordable,
@@ -77,15 +84,17 @@ public class CrateCatalogueUI : MonoBehaviour
     private void RefreshAffordability()
     {
         var playerGold = FindFirstObjectByType<PlayerGold>();
-        int gold = playerGold != null ? playerGold.CurrentGold : 0;
+        var playerLevel = FindFirstObjectByType<PlayerLevel>();
+        int gold  = playerGold  != null ? playerGold.CurrentGold   : 0;
+        int level = playerLevel != null ? playerLevel.CurrentLevel : 1;
 
-        // Enable / disable each button based on affordability
+        // Enable / disable each button based on affordability + level
         for (int i = 0; i < crates.Length; i++)
         {
             if (i >= crateButtons.Length || crateButtons[i] == null || crates[i] == null)
                 continue;
 
-            bool canAfford = gold >= crates[i].cratePrice;
+            bool canAfford = gold >= crates[i].cratePrice && level >= crates[i].requiredLevel;
             crateButtons[i].interactable = canAfford;
         }
 
@@ -93,7 +102,8 @@ public class CrateCatalogueUI : MonoBehaviour
         bool canBuySelected = selectedIndex >= 0
             && selectedIndex < crates.Length
             && crates[selectedIndex] != null
-            && gold >= crates[selectedIndex].cratePrice;
+            && gold >= crates[selectedIndex].cratePrice
+            && level >= crates[selectedIndex].requiredLevel;
 
         if (buyButton != null)
             buyButton.interactable = canBuySelected;
@@ -104,7 +114,7 @@ public class CrateCatalogueUI : MonoBehaviour
             // Try from expensive → cheap to pick the best affordable crate
             for (int i = crates.Length - 1; i >= 0; i--)
             {
-                if (crates[i] != null && gold >= crates[i].cratePrice)
+                if (crates[i] != null && gold >= crates[i].cratePrice && level >= crates[i].requiredLevel)
                 {
                     SelectCrate(i);
                     return;
