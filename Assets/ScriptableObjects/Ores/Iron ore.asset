@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Iron ore
   itemID: 1
-  icon: {fileID: -1939203981184712270, guid: b60e7d38df1ac128a9f658adce0844cf, type: 3}
+  icon: {fileID: 1212507046901863363, guid: 551cf6c0585fe694b8f7b11017375051, type: 3}
   baseValue: 0
   description: Basic smithing metal
   quantity: 0

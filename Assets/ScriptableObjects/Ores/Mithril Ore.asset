@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mithril Ore
   itemID: 8
-  icon: {fileID: 0}
+  icon: {fileID: -1098258763409540626, guid: b9b1073ea4601e84881ac4b3d23ee39b, type: 3}
   baseValue: 0
   description: Rare magical metal
   quantity: 0

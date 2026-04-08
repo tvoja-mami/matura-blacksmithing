@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mithril Dagger
   itemID: 40
-  icon: {fileID: 0}
+  icon: {fileID: 5036141554411121468, guid: 24b4fcc12a80f7e41adda60324eca302, type: 3}
   baseValue: 550
   description: 
   quantity: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Ornate Shield
   itemID: 35
-  icon: {fileID: 0}
+  icon: {fileID: 2157499811157367345, guid: 4d5dffaf552731a4b9be67c2b6755c3c, type: 3}
   baseValue: 650
   description: 
   quantity: 0

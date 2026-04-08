@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mithril Sword
   itemID: 41
-  icon: {fileID: 0}
+  icon: {fileID: 7775967760938375176, guid: 0b207b954c7282d4e87d9c07db3cb3c1, type: 3}
   baseValue: 1200
   description: 
   quantity: 0
