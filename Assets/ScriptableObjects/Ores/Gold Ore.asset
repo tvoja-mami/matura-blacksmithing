@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gold Ore
   itemID: 6
-  icon: {fileID: 0}
+  icon: {fileID: -5518487545602096814, guid: fa7048f2ab02f3345bcd2ecffdcd40e4, type: 3}
   baseValue: 0
   description: Precious metal
   quantity: 0

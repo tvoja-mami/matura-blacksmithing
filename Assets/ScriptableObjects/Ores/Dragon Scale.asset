@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Dragon Scale
   itemID: 9
-  icon: {fileID: 0}
+  icon: {fileID: -3577585116748662918, guid: 8c4c750b4c3a60f4d9b3c8a547aeb07e, type: 3}
   baseValue: 0
   description: The strongest metal known
   quantity: 0

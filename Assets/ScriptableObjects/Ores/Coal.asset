@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Coal
   itemID: 4
-  icon: {fileID: 0}
+  icon: {fileID: -6163301848416490558, guid: f18399f58c69e06418f446bcdfcc3030, type: 3}
   baseValue: 0
   description: Needed to forge steel
   quantity: 0

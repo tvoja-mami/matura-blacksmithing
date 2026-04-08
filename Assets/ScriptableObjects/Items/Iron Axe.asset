@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Iron Axe
   itemID: 12
-  icon: {fileID: 0}
+  icon: {fileID: -2133611732505453169, guid: 9cfcb6304cdbdcd46aa6f508cc0f6c1e, type: 3}
   baseValue: 130
   description: Axe made of iron
   quantity: 0
