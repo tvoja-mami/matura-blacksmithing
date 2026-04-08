@@ -119,58 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &5012313
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5012314}
-  - component: {fileID: 5012315}
-  m_Layer: 0
-  m_Name: CatalogueManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5012314
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5012313}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 159.31491, y: -41.417496, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1160885037}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5012315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5012313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
 --- !u!1 &57552132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &198926647
 Transform:
   m_ObjectHideFlags: 0
@@ -2210,58 +2158,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408414598}
   m_CullTransparentMesh: 1
---- !u!1 &425778762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425778763}
-  - component: {fileID: 425778764}
-  m_Layer: 0
-  m_Name: CatalogueManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &425778763
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425778762}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 159.31491, y: -41.417496, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1696502923}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &425778764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425778762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
 --- !u!1 &439693919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,7 +3430,6 @@ Transform:
   - {fileID: 596172883}
   - {fileID: 1833393413}
   - {fileID: 1521732736}
-  - {fileID: 649702524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &552126575
@@ -5554,6 +5449,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727337191}
+  m_CullTransparentMesh: 1
+--- !u!1 &728546227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728546228}
+  - component: {fileID: 728546230}
+  - component: {fileID: 728546229}
+  m_Layer: 5
+  m_Name: CrateImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &728546228
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728546227}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1696502923}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -95, y: 1}
+  m_SizeDelta: {x: 60, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &728546229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728546227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 439366390999814812, guid: 754f0fe7f3870a50ca11499c4964aa0c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &728546230
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728546227}
   m_CullTransparentMesh: 1
 --- !u!1 &739139190
 GameObject:
@@ -9913,7 +9883,6 @@ GameObject:
   - component: {fileID: 1160885042}
   - component: {fileID: 1160885041}
   - component: {fileID: 1160885040}
-  - component: {fileID: 1160885039}
   - component: {fileID: 1160885038}
   m_Layer: 5
   m_Name: Expensive Crate
@@ -9934,7 +9903,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5012314}
   - {fileID: 1421359222}
   - {fileID: 688482366}
   - {fileID: 87560205}
@@ -9960,26 +9928,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 0
---- !u!114 &1160885039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160885036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheapCrateCatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
 --- !u!114 &1160885040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10024,7 +9972,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1160885039}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheapCrateCatalogueUI, Assembly-CSharp
         m_MethodName: BuyCheapCrate
         m_Mode: 1
@@ -13535,7 +13483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1519132014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14933,58 +14881,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552256515}
   m_CullTransparentMesh: 1
---- !u!1 &1558283914
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1558283916}
-  - component: {fileID: 1558283915}
-  m_Layer: 0
-  m_Name: CatalogueManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1558283915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558283914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
---- !u!4 &1558283916
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558283914}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 159.31491, y: -41.417496, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1985049867}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584284298
 GameObject:
   m_ObjectHideFlags: 0
@@ -15019,7 +14915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65, y: -175}
+  m_AnchoredPosition: {x: 7, y: -175}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584284300
@@ -15383,7 +15279,6 @@ GameObject:
   - component: {fileID: 1696502928}
   - component: {fileID: 1696502927}
   - component: {fileID: 1696502926}
-  - component: {fileID: 1696502925}
   - component: {fileID: 1696502924}
   m_Layer: 5
   m_Name: NormalCrate
@@ -15404,7 +15299,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 425778763}
+  - {fileID: 728546228}
   - {fileID: 846564386}
   - {fileID: 664494904}
   m_Father: {fileID: 2042622523}
@@ -15429,26 +15324,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 0
---- !u!114 &1696502925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696502922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheapCrateCatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
 --- !u!114 &1696502926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15493,7 +15368,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1696502925}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheapCrateCatalogueUI, Assembly-CSharp
         m_MethodName: BuyCheapCrate
         m_Mode: 1
@@ -17818,8 +17693,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1215391674}
+  m_Children: []
   m_Father: {fileID: 1519132016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18276,7 +18150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -4}
+  m_AnchoredPosition: {x: 513, y: -4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1980198699
@@ -18548,7 +18422,6 @@ GameObject:
   - component: {fileID: 1985049869}
   - component: {fileID: 1985049868}
   - component: {fileID: 1985049871}
-  - component: {fileID: 1985049870}
   - component: {fileID: 1985049872}
   m_Layer: 5
   m_Name: CheapCrate
@@ -18569,7 +18442,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1558283916}
   - {fileID: 739139191}
   - {fileID: 800910589}
   - {fileID: 575660376}
@@ -18618,26 +18490,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985049866}
   m_CullTransparentMesh: 1
---- !u!114 &1985049870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985049866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ced765162404beaa62dac0d58c3a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheapCrateCatalogueUI
-  crateTypeText: {fileID: 0}
-  cratePriceText: {fileID: 0}
-  playerGold: {fileID: 0}
-  playerInventory: {fileID: 0}
-  oreItem: {fileID: 0}
-  crateName: Cheap Ore Crate
-  cratePrice: 50
-  oreAmount: 10
 --- !u!114 &1985049871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18682,7 +18534,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985049870}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheapCrateCatalogueUI, Assembly-CSharp
         m_MethodName: BuyCheapCrate
         m_Mode: 1
