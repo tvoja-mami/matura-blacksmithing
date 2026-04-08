@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Steel Axe
   itemID: 22
-  icon: {fileID: 0}
+  icon: {fileID: 2722287352095887629, guid: 480564232d4b0b34f9d63732ab63f89d, type: 3}
   baseValue: 260
   description: 
   quantity: 0

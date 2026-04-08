@@ -15,6 +15,13 @@ public class PlayerGold : MonoBehaviour
 
     public static event System.Action<int> OnGoldChanged;
     public int CurrentGold => currentGold;
+
+    public void SetGold(int amount)
+    {
+        currentGold = Mathf.Max(0, amount);
+        OnGoldChanged?.Invoke(currentGold);
+        UpdateGoldDisplay();
+    }
     
     private void Start()
     {

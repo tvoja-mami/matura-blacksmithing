@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Rope
   itemID: 3
-  icon: {fileID: 0}
+  icon: {fileID: -2566461447159376461, guid: 401667a3aee432a4880deae9814d3ece, type: 3}
   baseValue: 0
   description: Used as binding material
   quantity: 0

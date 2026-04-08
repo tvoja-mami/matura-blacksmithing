@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Wood plank
   itemID: 2
-  icon: {fileID: 0}
+  icon: {fileID: -192899844829211264, guid: 47f4ec71950ba1e41a750aeb08071ea2, type: 3}
   baseValue: 1
   description: Just wood
   quantity: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Jeweled Dagger
   itemID: 32
-  icon: {fileID: 0}
+  icon: {fileID: -5853036672025982558, guid: 080c55e896c721242a81bcf43a55e02b, type: 3}
   baseValue: 600
   description: 
   quantity: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Wooden Shield
   itemID: 13
-  icon: {fileID: 0}
+  icon: {fileID: -5463526075392100123, guid: 0e368b0fcda4fa5488bf8389cbf4b3a5, type: 3}
   baseValue: 80
   description: 
   quantity: 0

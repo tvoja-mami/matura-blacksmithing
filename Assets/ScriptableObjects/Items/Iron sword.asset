@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Iron Sword
   itemID: 11
-  icon: {fileID: 524607707052518595, guid: abb8908f70bead94a9a2e48b2a8def18, type: 3}
+  icon: {fileID: -2278440341621924931, guid: 0766cc099338f5b4c913cf66b75d6c54, type: 3}
   baseValue: 100
   description: Sword made of iron
   quantity: 0

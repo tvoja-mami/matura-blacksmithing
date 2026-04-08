@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gold Sword
   itemID: 31
-  icon: {fileID: 0}
+  icon: {fileID: 6918281034950216153, guid: 2051831ec1efc434ab0adb328b8f84e1, type: 3}
   baseValue: 500
   description: 
   quantity: 0
