@@ -165,8 +165,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
+  m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -425,8 +425,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
+  m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -562,8 +562,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Iron ore
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
+  m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
