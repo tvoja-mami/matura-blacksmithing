@@ -30527,7 +30527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6b87fcbaa1e4ef1b0a121c9adcba51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGold
-  currentGold: 250
+  currentGold: 100
   debugGoldIncrement: 100
   goldText: {fileID: 1980198700}
   goldTextCatalogue: {fileID: 0}
@@ -31945,7 +31945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6b87fcbaa1e4ef1b0a121c9adcba51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGold
-  currentGold: 1000
+  currentGold: 100
   debugGoldIncrement: 100
   goldText: {fileID: 1980198700}
   goldTextCatalogue: {fileID: 0}
