@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,25 +14,32 @@ public class SellUI : MonoBehaviour
     [SerializeField] private Transform itemListContainer;
     [SerializeField] private GameObject sellSlotPrefab;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private Button sellButton;
+
+    [Header("Selection Colours")]
+    public Color selectedColour = new Color(0.85f, 0.65f, 0.25f, 1f);
+    public Color normalColour   = new Color(0.40f, 0.40f, 0.40f, 1f);
 
     private bool isOpen;
+    private int selectedIndex = -1;
+    private readonly List<SellSlotUI> slots = new List<SellSlotUI>();
 
     private void Start()
     {
-        if (playerInventory == null)
-            playerInventory = FindFirstObjectByType<PlayerInventory>();
-        if (playerGold == null)
-            playerGold = FindFirstObjectByType<PlayerGold>();
+        playerInventory ??= FindFirstObjectByType<PlayerInventory>();
+        playerGold      ??= FindFirstObjectByType<PlayerGold>();
+
+        if (sellButton != null)
+            sellButton.onClick.AddListener(SellSelectedItem);
     }
 
-    // ────────── Open / Close (same pattern as ForgeUI) ──────────
+    // ────────── Open / Close ──────────
 
     public void OpenShop()
     {
         isOpen = true;
         sellPanel.SetActive(true);
         PlayerMovement.ActiveMenuCount++;
-        UpdateGoldDisplay();
         RefreshItemList();
     }
 
@@ -48,91 +56,104 @@ public class SellUI : MonoBehaviour
         else OpenShop();
     }
 
-    // ────────── Build the list of sellable items ──────────
+    // ────────── Selection (called by SellSlotUI) ──────────
+
+    public void SelectItem(int index)
+    {
+        if (index < 0 || index >= playerInventory.craftedItems.Count) return;
+
+        selectedIndex = index;
+
+        if (sellButton != null)
+            sellButton.interactable = true;
+
+        UpdateButtonColours();
+        UpdateGoldDisplay();
+    }
+
+    private void ClearSelection()
+    {
+        selectedIndex = -1;
+        if (sellButton != null)
+            sellButton.interactable = false;
+        UpdateButtonColours();
+    }
+
+    // ────────── Button Colours (same as CrateCatalogueUI) ──────────
+
+    private void UpdateButtonColours()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            Button btn = slots[i].GetButton();
+            if (btn == null) continue;
+
+            Color tint = i == selectedIndex ? selectedColour : normalColour;
+
+            var img = btn.GetComponent<Image>();
+            if (img != null) img.color = Color.white;
+
+            var colours = btn.colors;
+            colours.normalColor      = tint;
+            colours.highlightedColor = tint;
+            colours.selectedColor    = tint;
+            colours.colorMultiplier  = 1f;
+            btn.colors = colours;
+        }
+    }
+
+    // ────────── Item List ──────────
 
     private void RefreshItemList()
     {
-        ClearChildren(itemListContainer);
+        for (int i = itemListContainer.childCount - 1; i >= 0; i--)
+            Destroy(itemListContainer.GetChild(i).gameObject);
 
-        foreach (CraftedItem crafted in playerInventory.craftedItems)
+        slots.Clear();
+        ClearSelection();
+
+        for (int i = 0; i < playerInventory.craftedItems.Count; i++)
         {
+            CraftedItem crafted = playerInventory.craftedItems[i];
             if (crafted?.item == null) continue;
 
-            GameObject slot = Instantiate(sellSlotPrefab, itemListContainer);
+            GameObject obj = Instantiate(sellSlotPrefab, itemListContainer);
+            SellSlotUI slot = obj.GetComponent<SellSlotUI>();
+            if (slot == null) slot = obj.AddComponent<SellSlotUI>();
 
-            // Expect the prefab to have child TextMeshPro objects:
-            //   "ItemName_Text"  — for the item name + rarity
-            //   "ItemCount_Text" — for the sell price
-            TextMeshProUGUI nameText = null;
-            TextMeshProUGUI priceText = null;
-
-            Transform nameT = slot.transform.Find("ItemName_Text");
-            if (nameT != null) nameText = nameT.GetComponent<TextMeshProUGUI>();
-
-            Transform priceT = slot.transform.Find("ItemCount_Text");
-            if (priceT != null) priceText = priceT.GetComponent<TextMeshProUGUI>();
-
-            // Icon
-            Transform iconT = slot.transform.Find("Icon");
-            if (iconT != null)
-            {
-                Image icon = iconT.GetComponent<Image>();
-                if (icon != null)
-                {
-                    icon.sprite = crafted.item.icon;
-                    icon.enabled = crafted.item.icon != null;
-                }
-            }
-
-            // Name with rarity colour
-            if (nameText != null)
-            {
-                nameText.text = $"{RarityHelper.GetName(crafted.rarity)}\n{crafted.item.itemName}";
-                nameText.color = RarityHelper.GetColor(crafted.rarity);
-            }
-
-            // Sell value
-            if (priceText != null)
-                priceText.text = $"{crafted.GetSellValue()}g";
-
-            // Rarity background tint
-            Image bg = slot.GetComponent<Image>();
-            if (bg != null)
-                bg.color = RarityHelper.GetBackgroundColor(crafted.rarity);
-
-            // Hook up sell button
-            Button sellBtn = slot.GetComponentInChildren<Button>();
-            if (sellBtn != null)
-            {
-                CraftedItem captured = crafted;
-                sellBtn.onClick.AddListener(() => SellItem(captured));
-            }
+            slot.Initialize(crafted, this, i);
+            slots.Add(slot);
         }
+
+        // Auto-select first item
+        if (slots.Count > 0)
+            SelectItem(0);
+
+        UpdateGoldDisplay();
     }
 
     // ────────── Sell ──────────
 
-    private void SellItem(CraftedItem crafted)
+    public void SellSelectedItem()
     {
-        int value = crafted.GetSellValue();
-        playerGold.AddGold(value);
-        playerInventory.RemoveCraftedItem(crafted);
-        UpdateGoldDisplay();
+        if (selectedIndex < 0 || selectedIndex >= playerInventory.craftedItems.Count) return;
+
+        int nextIndex = selectedIndex;
+
+        CraftedItem item = playerInventory.craftedItems[selectedIndex];
+        playerGold.AddGold(item.GetSellValue());
+        playerInventory.RemoveCraftedItem(item);
+
         RefreshItemList();
+
+        // Auto-select next item (or last if we sold the last one)
+        if (slots.Count > 0)
+            SelectItem(Mathf.Min(nextIndex, slots.Count - 1));
     }
 
     private void UpdateGoldDisplay()
     {
         if (goldText != null && playerGold != null)
             goldText.text = $"Gold: {playerGold.CurrentGold}g";
-    }
-
-    // ────────── Util ──────────
-
-    private void ClearChildren(Transform parent)
-    {
-        if (parent == null) return;
-        for (int i = parent.childCount - 1; i >= 0; i--)
-            Destroy(parent.GetChild(i).gameObject);
     }
 }
