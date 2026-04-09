@@ -5,9 +5,11 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    [Header("Slot Prefab")]
-    [Tooltip("The prefab for inventory slots. Must have InventoryItem component")]
-    public GameObject slotPrefab;
+    [Header("Slot Prefabs")]
+    [Tooltip("Prefab for material slots (left side)")]
+    public GameObject leftSlotPrefab;
+    [Tooltip("Prefab for crafted item slots (right side)")]
+    public GameObject rightSlotPrefab;
 
     [Header("Materials (left side)")]
     [Tooltip("Content transform inside the materials ScrollRect")]
@@ -22,7 +24,7 @@ public class InventoryUI : MonoBehaviour
     private PlayerInventory playerInventory;
 
     public bool IsConfigured =>
-        slotPrefab != null && materialsContentParent != null && craftedContentParent != null;
+        leftSlotPrefab != null && rightSlotPrefab != null && materialsContentParent != null && craftedContentParent != null;
 
     /// <summary>Find the first InventoryUI in the scene that has its references assigned.</summary>
     public static InventoryUI FindConfiguredInstance()
@@ -48,7 +50,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (!IsConfigured)
         {
-            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (slotPrefab/materialsContentParent/craftedContentParent). Skipping.");
+            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (leftSlotPrefab/rightSlotPrefab/materialsContentParent/craftedContentParent). Skipping.");
             return;
         }
 
@@ -84,7 +86,7 @@ public class InventoryUI : MonoBehaviour
             if (quantity <= 0 || item == null)
                 continue;
 
-            GameObject newSlot = Instantiate(slotPrefab, materialsContentParent);
+            GameObject newSlot = Instantiate(leftSlotPrefab, materialsContentParent);
             InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
@@ -104,7 +106,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (craftedItem?.item == null) continue;
 
-            GameObject newSlot = Instantiate(slotPrefab, craftedContentParent);
+            GameObject newSlot = Instantiate(rightSlotPrefab, craftedContentParent);
             InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
