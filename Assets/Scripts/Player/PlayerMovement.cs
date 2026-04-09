@@ -7,13 +7,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [Header("Input Settings")]
     [SerializeField] float moveSpeed;
+
     private float horizontalInput;
     private float verticalInput;
+    private Animator animator;
+    private Vector2 lastMoveDirection = Vector2.down;
 
-    /// <summary>
-    /// Number of UI menus currently open. Movement is blocked when > 0.
-    /// </summary>
     public static int ActiveMenuCount { get; set; }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void FixedUpdate()
     {
@@ -28,8 +33,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        Vector2 inputVector = context.ReadValue<Vector2>();
+        Vector2 inputVector = context.ReadValue<Vector2>(); // read BEFORE canceled check
+
         horizontalInput = inputVector.x;
         verticalInput = inputVector.y;
+
+        if (context.canceled)
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetFloat("LastInputX", lastMoveDirection.x); // capital X
+            animator.SetFloat("LastInputY", lastMoveDirection.y); // capital Y
+        }
+        else
+        {
+            lastMoveDirection = inputVector;
+            animator.SetBool("isWalking", true);
+            animator.SetFloat("InputX", horizontalInput, 0f, Time.deltaTime);
+            animator.SetFloat("InputY", verticalInput, 0f, Time.deltaTime);
+        }
     }
 }
