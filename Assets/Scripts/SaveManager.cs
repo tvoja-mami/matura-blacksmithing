@@ -60,7 +60,7 @@ public class SaveManager : MonoBehaviour
         playerGold.SetGold(playerGold.CurrentGold);
         playerLevel.SetLevelAndXP(playerLevel.CurrentLevel, playerLevel.CurrentXP);
 
-        InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>();
+        InventoryUI inventoryUI = InventoryUI.FindConfiguredInstance();
         if (inventoryUI != null)
             inventoryUI.UpdateInventoryUI(playerInventory);
     }

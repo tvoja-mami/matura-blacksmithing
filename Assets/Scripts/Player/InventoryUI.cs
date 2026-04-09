@@ -5,18 +5,34 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Slot Prefab")]
     [Tooltip("The prefab for inventory slots. Must have InventoryItem component")]
     public GameObject slotPrefab;
-    
-    [Tooltip("The parent transform where inventory items will be instantiated")]
-    public Transform contentParent;
+
+    [Header("Materials (left side)")]
+    [Tooltip("Content transform inside the materials ScrollRect")]
+    public Transform materialsContentParent;
+
+    [Header("Crafted Items (right side)")]
+    [Tooltip("Content transform inside the crafted items ScrollRect")]
+    public Transform craftedContentParent;
 
     [Header("Debug")]
     [SerializeField]
     private PlayerInventory playerInventory;
 
-    private bool IsConfigured => slotPrefab != null && contentParent != null;
+    public bool IsConfigured =>
+        slotPrefab != null && materialsContentParent != null && craftedContentParent != null;
+
+    /// <summary>Find the first InventoryUI in the scene that has its references assigned.</summary>
+    public static InventoryUI FindConfiguredInstance()
+    {
+        foreach (var ui in FindObjectsByType<InventoryUI>(FindObjectsSortMode.None))
+        {
+            if (ui.IsConfigured) return ui;
+        }
+        return null;
+    }
 
     private void OnEnable()
     {
@@ -32,7 +48,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (!IsConfigured)
         {
-            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (slotPrefab/contentParent). Skipping.");
+            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (slotPrefab/materialsContentParent/craftedContentParent). Skipping.");
             return;
         }
 
@@ -52,14 +68,14 @@ public class InventoryUI : MonoBehaviour
     public void UpdateInventoryUI(PlayerInventory inventory)
     {
         if (inventory == null || !IsConfigured)
-        {
             return;
-        }
 
         playerInventory = inventory;
-        ClearInventorySlots(contentParent);
 
-        // Stackable materials
+        ClearChildren(materialsContentParent);
+        ClearChildren(craftedContentParent);
+
+        // ── Materials → left side ──
         foreach (var itemEntry in inventory.items)
         {
             ItemData item = itemEntry.Key;
@@ -68,7 +84,7 @@ public class InventoryUI : MonoBehaviour
             if (quantity <= 0 || item == null)
                 continue;
 
-            GameObject newSlot = Instantiate(slotPrefab, contentParent);
+            GameObject newSlot = Instantiate(slotPrefab, materialsContentParent);
             InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
@@ -78,17 +94,17 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"InventoryUI: Failed to create or find InventoryItem component for Item: {item.name}");
+                Debug.LogError($"InventoryUI: Failed to create InventoryItem for {item.name}");
                 Destroy(newSlot);
             }
         }
 
-        // Individual crafted items — each shown separately with rarity
+        // ── Crafted items → right side ──
         foreach (CraftedItem craftedItem in inventory.craftedItems)
         {
             if (craftedItem?.item == null) continue;
 
-            GameObject newSlot = Instantiate(slotPrefab, contentParent);
+            GameObject newSlot = Instantiate(slotPrefab, craftedContentParent);
             InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
@@ -115,21 +131,17 @@ public class InventoryUI : MonoBehaviour
         return itemUI;
     }
 
-    private void ClearInventorySlots(Transform gridContent)
+    private void ClearChildren(Transform parent)
     {
-        if (gridContent == null) return;
+        if (parent == null) return;
 
-        for (int i = gridContent.childCount - 1; i >= 0; i--)
+        for (int i = parent.childCount - 1; i >= 0; i--)
         {
-            Transform child = gridContent.GetChild(i);
+            Transform child = parent.GetChild(i);
             if (Application.isPlaying)
-            {
                 Destroy(child.gameObject);
-            }
             else
-            {
                 DestroyImmediate(child.gameObject);
-            }
         }
     }
 }

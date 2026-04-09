@@ -37,11 +37,13 @@ public class ForgeUI : MonoBehaviour
 
     private bool isForgeOpen;
     private RecipeData selectedRecipe;
+    private PlayerInventory playerInventory;
 
     private void Awake()
     {
         if (playerLevel == null)
             playerLevel = FindFirstObjectByType<PlayerLevel>();
+        playerInventory = FindFirstObjectByType<PlayerInventory>();
     }
 
     private void OnEnable()
@@ -99,6 +101,9 @@ public class ForgeUI : MonoBehaviour
             if (isUnlocked) unlocked.Add(recipe);
             else            locked.Add(recipe);
         }
+
+        unlocked.Sort((a, b) => a.requiredLevel.CompareTo(b.requiredLevel));
+        locked.Sort((a, b) => a.requiredLevel.CompareTo(b.requiredLevel));
 
         foreach (RecipeData recipe in unlocked) SpawnRecipeButton(recipe, false);
         foreach (RecipeData recipe in locked)   SpawnRecipeButton(recipe, true);
@@ -216,7 +221,15 @@ public class ForgeUI : MonoBehaviour
             if (req.item == null) continue;
             GameObject entry = Instantiate(requiredItemsPrefab, requiredItemsContainer);
             TextMeshProUGUI tmp = entry.GetComponentInChildren<TextMeshProUGUI>();
-            if (tmp != null) tmp.text = $"{req.item.itemName}: {req.amount}";
+            if (tmp != null)
+            {
+                int owned = 0;
+                if (playerInventory != null && playerInventory.items.ContainsKey(req.item))
+                    owned = playerInventory.items[req.item];
+
+                tmp.text = $"{req.item.itemName}: {owned}/{req.amount}";
+                tmp.color = owned < req.amount ? Color.red : Color.white;
+            }
         }
     }
 

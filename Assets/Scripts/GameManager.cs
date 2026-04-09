@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (inventoryUi == null)
+        if (inventoryUi == null || !inventoryUi.IsConfigured)
         {
-            inventoryUi = FindFirstObjectByType<InventoryUI>();
+            inventoryUi = InventoryUI.FindConfiguredInstance();
             if (inventoryUi == null)
             {
-                Debug.LogError("GameManager: Could not find InventoryUI in scene!");
+                Debug.LogError("GameManager: Could not find a configured InventoryUI in scene!");
                 enabled = false;
                 return;
             }
