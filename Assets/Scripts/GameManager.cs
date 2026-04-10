@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public PlayerInventory playerInventory;
@@ -8,10 +9,57 @@ public class GameManager : MonoBehaviour
     public ItemData ironSwordItem;
     public InventoryUI inventoryUi;
     public PlayerGold playerGold;
+     [Header("Time & Day Cycle")]
+    [Tooltip("Length of a full in-game day in real-world seconds.")]
+    public float dayLengthSeconds = 300f;
+    [Tooltip("The current time in hours (0-24).")]
+    [Range(0f, 24f)] public float currentTime = 8f;
+    [Tooltip("Hour when the clock stops and waits for the player (e.g. 20 = 20:00).")]
+    [Range(0f, 24f)] public float dayStopHour = 20f;
+    [Tooltip("The current day number (1=Mon, 2=Tues, etc.).")]
+    public int dayNumber = 1;
+    public static event System.Action<float, int> OnTimeChanged;
+
+    [Header("Time Pause")]
+    [Tooltip("True when time has reached dayStopHour and is waiting for user action to advance.")]
+    [SerializeField] private bool isWaitingForNextDay = false;
+
+    [Header("Camera Follow")]
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 cameraOffset = new(0f, 0f, -10f);
+
+    [Header("UI")]
+    [Tooltip("Optional text used for interaction prompts.")]
+    [SerializeField] private TextMeshProUGUI controlText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Try to find references if not assigned
+        if (playerTransform == null)
+        {
+            PlayerMovement movementPlayer = FindFirstObjectByType<PlayerMovement>();
+            if (movementPlayer != null)
+            {
+                playerTransform = movementPlayer.transform;
+            }
+            else
+            {
+                PlayerInteractor2D interactorPlayer = FindFirstObjectByType<PlayerInteractor2D>();
+                if (interactorPlayer != null)
+                {
+                    playerTransform = interactorPlayer.transform;
+                }
+                else
+                {
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    if (playerObject != null)
+                    {
+                        playerTransform = playerObject.transform;
+                    }
+                }
+            }
+        }
+
         if (playerInventory == null)
         {
             playerInventory = FindFirstObjectByType<PlayerInventory>();
@@ -23,12 +71,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (inventoryUi == null)
+        if (inventoryUi == null || !inventoryUi.IsConfigured)
         {
-            inventoryUi = FindFirstObjectByType<InventoryUI>();
+            inventoryUi = InventoryUI.FindConfiguredInstance();
             if (inventoryUi == null)
             {
-                Debug.LogError("GameManager: Could not find InventoryUI in scene!");
+                Debug.LogError("GameManager: Could not find a configured InventoryUI in scene!");
                 enabled = false;
                 return;
             }
@@ -45,25 +93,104 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Make sure we have the required ItemData references
+
         if (ironOreItem == null || ironSwordItem == null)
         {
             Debug.LogError("GameManager: ItemData references (ironOreItem or ironSwordItem) are missing!");
             enabled = false;
             return;
         }
-
-        // Initialize UI with current inventory
         inventoryUi.UpdateInventoryUI(playerInventory);
     }
 
     // Update is called once per frame
+ 
     void Update()
     {
+        UpdateTime();
+        if (Bed.ConsumeTrigger())
+        {
+            Debug.Log("Bed trigger consumed — advancing to next day.");
+            AdvanceToNextDay();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        FollowPlayerWithCamera();
+    }
+
+
+//čas
+
+    private void UpdateTime()
+    {
+        if (dayLengthSeconds <= 0f) return;
+
+        // Stop time progression once we reach the end-of-day threshold.
+        if (isWaitingForNextDay)
+        {
+            return;
+        }
+
+        float hoursPerSecond = 24f / dayLengthSeconds;
+        currentTime += hoursPerSecond * Time.deltaTime;
+
+        if (currentTime >= dayStopHour)
+        {
+            currentTime = dayStopHour;
+            isWaitingForNextDay = true;
+        }
+
+        OnTimeChanged?.Invoke(currentTime, dayNumber);
+    }
+
+    private void FollowPlayerWithCamera()
+    {
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            return;
+        }
+
+        mainCamera.transform.position = playerTransform.position + cameraOffset;
+    }
+
+    //nov dan
+    public void AdvanceToNextDay()
+    {
+        if (!isWaitingForNextDay)
+        {
+            Debug.Log("GameManager: AdvanceToNextDay called, but the game is not waiting for next day yet.");
+            return;
+        }
+
+        isWaitingForNextDay = false;
+        EndDay();
+    }
+
+    public void EndDay()
+    {
+        Debug.Log("Nov dan");
+        currentTime = 8f;
+        dayNumber++;
+        if (dayNumber > 5)
+        {
+            dayNumber = 1;
+        }
+
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.SaveGame();
+
+        OnTimeChanged?.Invoke(currentTime, dayNumber);
     }
     public void GetOre_DEBUG()
     {
-        // Add 5 iron ore to the player's inventory using the inventory API
         playerInventory.AddItem(ironOreItem, 5);
         if (playerInventory.items.TryGetValue(ironOreItem, out int newCount))
         {
@@ -82,7 +209,6 @@ public class GameManager : MonoBehaviour
             int removeQuantity = 3;
             if (currentCount >= removeQuantity)
             {
-                // remove ores and add crafted sword using PlayerInventory API
                 playerInventory.RemoveItem(ironOreItem, removeQuantity);
                 playerInventory.AddItem(ironSwordItem, 1);
                 int remainingOre = playerInventory.items.ContainsKey(ironOreItem) ? playerInventory.items[ironOreItem] : 0;

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e234bea6c2dafc3933496395a32d6f, type: 3}
+  m_Name: Jeweled Dagger
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Jeweled Dagger
+  itemID: 32
+  icon: {fileID: -5853036672025982558, guid: 080c55e896c721242a81bcf43a55e02b, type: 3}
+  baseValue: 600
+  description: 
+  quantity: 0

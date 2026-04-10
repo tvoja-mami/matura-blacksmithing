@@ -5,16 +5,36 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    [Header("References")]
-    [Tooltip("The prefab for inventory slots. Must have InventoryItem component")]
-    public GameObject slotPrefab;
-    
-    [Tooltip("The parent transform where inventory items will be instantiated")]
-    public Transform contentParent;
+    [Header("Slot Prefabs")]
+    [Tooltip("Prefab for material slots (left side)")]
+    public GameObject leftSlotPrefab;
+    [Tooltip("Prefab for crafted item slots (right side)")]
+    public GameObject rightSlotPrefab;
+
+    [Header("Materials (left side)")]
+    [Tooltip("Content transform inside the materials ScrollRect")]
+    public Transform materialsContentParent;
+
+    [Header("Crafted Items (right side)")]
+    [Tooltip("Content transform inside the crafted items ScrollRect")]
+    public Transform craftedContentParent;
 
     [Header("Debug")]
     [SerializeField]
     private PlayerInventory playerInventory;
+
+    public bool IsConfigured =>
+        leftSlotPrefab != null && rightSlotPrefab != null && materialsContentParent != null && craftedContentParent != null;
+
+    /// <summary>Find the first InventoryUI in the scene that has its references assigned.</summary>
+    public static InventoryUI FindConfiguredInstance()
+    {
+        foreach (var ui in FindObjectsByType<InventoryUI>(FindObjectsSortMode.None))
+        {
+            if (ui.IsConfigured) return ui;
+        }
+        return null;
+    }
 
     private void OnEnable()
     {
@@ -28,148 +48,102 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        // Validate required references
-        if (slotPrefab == null)
+        if (!IsConfigured)
         {
-            Debug.LogError("InventoryUI: slotPrefab reference is missing!");
-            enabled = false;
+            Debug.LogWarning($"InventoryUI on '{gameObject.name}': Missing references (leftSlotPrefab/rightSlotPrefab/materialsContentParent/craftedContentParent). Skipping.");
             return;
         }
 
-        if (contentParent == null)
-        {
-            Debug.LogError("InventoryUI: contentParent reference is missing!");
-            enabled = false;
-            return;
-        }
-
-        // Initial UI update if we have an inventory reference
-        if (playerInventory == null)
-        {
-            playerInventory = FindFirstObjectByType<PlayerInventory>();
-        }
-
+        playerInventory ??= FindFirstObjectByType<PlayerInventory>();
         if (playerInventory != null)
-        {
             UpdateInventoryUI(playerInventory);
-        }
     }
 
-    // Called whenever the inventory changes (through the event system)
     private void HandleInventoryChanged()
     {
-        if (playerInventory == null)
-        {
-            playerInventory = FindFirstObjectByType<PlayerInventory>();
-        }
+        playerInventory ??= FindFirstObjectByType<PlayerInventory>();
 
         if (playerInventory != null)
-        {
             UpdateInventoryUI(playerInventory);
-        }
-        else
-        {
-            Debug.LogWarning("InventoryUI: PlayerInventory reference missing; cannot refresh UI on change.");
-        }
     }
 
-    /// <summary>
-    /// Updates the entire inventory UI display with the current inventory contents
-    /// </summary>
-    /// <param name="inventory">The PlayerInventory to display</param>
     public void UpdateInventoryUI(PlayerInventory inventory)
     {
-        if (inventory == null)
-        {
-            Debug.LogWarning("InventoryUI: Attempted to update with null inventory!");
+        if (inventory == null || !IsConfigured)
             return;
-        }
 
-        // Cache the inventory reference for event handling
         playerInventory = inventory;
 
-        // Clear existing slots
-        ClearInventorySlots(contentParent);
+        ClearChildren(materialsContentParent);
+        ClearChildren(craftedContentParent);
 
-        // Create slots for all items with quantity > 0
+        // ── Materials → left side ──
         foreach (var itemEntry in inventory.items)
         {
             ItemData item = itemEntry.Key;
             int quantity = itemEntry.Value;
 
-            if (quantity <= 0) continue;
+            if (quantity <= 0 || item == null)
+                continue;
 
-            // Instantiate a new slot
-            GameObject newSlot = Instantiate(slotPrefab, contentParent);
-            
-            // Try to get the InventoryItem component from the instantiated slot
-            InventoryItem itemUI = newSlot.GetComponent<InventoryItem>();
-
-            if (itemUI == null)
-            {
-                // Fallback: if the prefab doesn't have the InventoryItem script,
-                // create one on the instantiated object and try to wire basic UI children.
-                itemUI = newSlot.AddComponent<InventoryItem>();
-
-                // Try to auto-find an Image and a TextMeshProUGUI in children
-                var image = newSlot.GetComponentInChildren<Image>();
-                var tmp = newSlot.GetComponentInChildren<TextMeshProUGUI>();
-
-                if (image != null)
-                {
-                    itemUI.iconImage = image;
-                }
-                if (tmp != null)
-                {
-                    itemUI.quantityText = tmp;
-                }
-                // nameText is optional; try to find a second TMP (if present)
-                var allTmps = newSlot.GetComponentsInChildren<TextMeshProUGUI>();
-                if (allTmps != null && allTmps.Length > 1)
-                {
-                    itemUI.nameText = allTmps.FirstOrDefault(t => t != itemUI.quantityText);
-                }
-            }
+            GameObject newSlot = Instantiate(leftSlotPrefab, materialsContentParent);
+            InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
 
             if (itemUI != null)
             {
-                // Update the slot with item data
                 itemUI.item = item;
-
-                // Force an immediate refresh of the slot's UI
                 itemUI.RefreshUI();
             }
             else
             {
-                Debug.LogError($"InventoryUI: Failed to create or find InventoryItem component for Item: {item.name}");
+                Debug.LogError($"InventoryUI: Failed to create InventoryItem for {item.name}");
                 Destroy(newSlot);
             }
         }
-        Debug.Log("InventoryUI: UI updated with current inventory contents.");
+
+        // ── Crafted items → right side ──
+        foreach (CraftedItem craftedItem in inventory.craftedItems)
+        {
+            if (craftedItem?.item == null) continue;
+
+            GameObject newSlot = Instantiate(rightSlotPrefab, craftedContentParent);
+            InventoryItem itemUI = GetOrCreateInventoryItem(newSlot);
+
+            if (itemUI != null)
+                itemUI.RefreshAsCraftedItem(craftedItem);
+            else
+                Destroy(newSlot);
+        }
     }
 
-    /// <summary>
-    /// Safely destroys all child slot objects in the content parent
-    /// </summary>
-    private void ClearInventorySlots(Transform gridContent)
+    private InventoryItem GetOrCreateInventoryItem(GameObject slot)
     {
-        if (gridContent == null) return;
+        InventoryItem itemUI = slot.GetComponent<InventoryItem>() ?? slot.AddComponent<InventoryItem>();
 
-        // Cache children count as it can change during destruction
-        int childCount = gridContent.childCount;
-        
-        // Destroy from last to first to avoid reindexing issues
-        for (int i = childCount - 1; i >= 0; i--)
+        itemUI.iconImage ??= slot.GetComponentInChildren<Image>();
+        itemUI.quantityText ??= slot.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (itemUI.nameText == null)
         {
-            Transform child = gridContent.GetChild(i);
+            var allTmps = slot.GetComponentsInChildren<TextMeshProUGUI>();
+            if (allTmps != null && allTmps.Length > 1)
+                itemUI.nameText = allTmps.FirstOrDefault(t => t != itemUI.quantityText);
+        }
+
+        return itemUI;
+    }
+
+    private void ClearChildren(Transform parent)
+    {
+        if (parent == null) return;
+
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Transform child = parent.GetChild(i);
             if (Application.isPlaying)
-            {
                 Destroy(child.gameObject);
-            }
             else
-            {
                 DestroyImmediate(child.gameObject);
-            }
         }
     }
 }

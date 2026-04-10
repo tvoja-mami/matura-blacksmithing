@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b6e2e9261da194eb9600976756f006, type: 3}
+  m_Name: Recipe_Gold_Sword
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeData
+  recipeName: Gold Sword
+  recipeID: 302
+  requiredMaterials:
+  - item: {fileID: 11400000, guid: a6462fe1d2b3076489d82aa64e428497, type: 2}
+    amount: 6
+  - item: {fileID: 11400000, guid: 73c2330d7bb290c429e8484bcf38ea20, type: 2}
+    amount: 2
+  outputItem: {fileID: 11400000, guid: 08ff2321c4dd84dd28f03519bc7f3fa4, type: 2}
+  requiredLevel: 7
+  unlockCost: 600
+  craftXP: 100

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b6e2e9261da194eb9600976756f006, type: 3}
+  m_Name: Recipe_Royal_axe
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeData
+  recipeName: Royal Axe
+  recipeID: 303
+  requiredMaterials:
+  - item: {fileID: 11400000, guid: a6462fe1d2b3076489d82aa64e428497, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 73c2330d7bb290c429e8484bcf38ea20, type: 2}
+    amount: 4
+  - item: {fileID: 11400000, guid: 188d56f31a3c7494c9eb76503398a7d1, type: 2}
+    amount: 2
+  outputItem: {fileID: 11400000, guid: b12174de48d4b6e47a22d3e20f14f671, type: 2}
+  requiredLevel: 7
+  unlockCost: 600
+  craftXP: 100

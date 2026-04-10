@@ -10,10 +10,18 @@ public class PlayerGold : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI goldText;
+    [SerializeField]
     private TextMeshProUGUI goldTextCatalogue;
 
     public static event System.Action<int> OnGoldChanged;
     public int CurrentGold => currentGold;
+
+    public void SetGold(int amount)
+    {
+        currentGold = Mathf.Max(0, amount);
+        OnGoldChanged?.Invoke(currentGold);
+        UpdateGoldDisplay();
+    }
     
     private void Start()
     {
@@ -61,7 +69,7 @@ public class PlayerGold : MonoBehaviour
     {
         if (goldText != null)
         {
-            goldText.text = "Player gold: " + currentGold;
+            goldText.text = "Gold: " + currentGold;
         }
         if (goldTextCatalogue != null)
         {

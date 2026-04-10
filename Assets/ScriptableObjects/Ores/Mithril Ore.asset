@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e234bea6c2dafc3933496395a32d6f, type: 3}
+  m_Name: Mithril Ore
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Mithril Ore
+  itemID: 8
+  icon: {fileID: -1098258763409540626, guid: b9b1073ea4601e84881ac4b3d23ee39b, type: 3}
+  baseValue: 0
+  description: Rare magical metal
+  quantity: 0
