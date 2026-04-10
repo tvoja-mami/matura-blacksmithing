@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Hidden2
+    uniqueID: 1971183955
+    locked: 0
+  - name: Hidden
+    uniqueID: 4217723955
+    locked: 0
   - name: Ground
     uniqueID: 797558589
     locked: 0
