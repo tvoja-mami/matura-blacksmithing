@@ -15,6 +15,11 @@ public class PlayerInteractor2D : MonoBehaviour
 
     private void OnEnable()
     {
+        if (controls == null)
+        {
+            controls = new PlayerControls();
+        }
+
         controls.Gameplay.Enable();
         controls.Gameplay.Interact.performed += OnInteract;
     }

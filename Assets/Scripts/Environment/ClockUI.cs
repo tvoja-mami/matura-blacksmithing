@@ -6,6 +6,8 @@ public class ClockUI : MonoBehaviour
     public TextMeshProUGUI clockText;
     public TextMeshProUGUI dayText;
 
+    public int CurrentHour;
+
     private void OnEnable()
     {
         GameManager.OnTimeChanged += UpdateClock;
@@ -19,6 +21,8 @@ public class ClockUI : MonoBehaviour
     private void UpdateClock(float newTime, int newDay)
     {
         int hours = Mathf.FloorToInt(newTime);
+        CurrentHour = hours;
+
         int minutes = Mathf.FloorToInt((newTime - hours) * 60f);
         clockText.text = $"{hours:00}:{minutes:00}";
 

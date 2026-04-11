@@ -110,8 +110,7 @@ public class GameManager : MonoBehaviour
         UpdateTime();
         if (Bed.ConsumeTrigger())
         {
-            Debug.Log("Bed trigger consumed — advancing to next day.");
-            AdvanceToNextDay();
+         UpdateTime();
         }
     }
 
