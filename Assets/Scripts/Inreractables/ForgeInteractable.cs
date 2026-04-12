@@ -18,6 +18,12 @@ public class ForgeInteractable : MonoBehaviour, IInteractable
     {
         if (forgeUI == null) return;
 
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+        {
+            Debug.Log("ForgeInteractable: Shop is closed for the day.");
+            return;
+        }
+
         // Ensure the GameObject is active so ForgeUI can run.
         forgeUI.gameObject.SetActive(true);
         forgeUI.ToggleForge();
@@ -25,6 +31,9 @@ public class ForgeInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractionPrompt()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+            return "[E] Forge (closed for the day)";
+
         return prompt;
     }
 }

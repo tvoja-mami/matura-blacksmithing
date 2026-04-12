@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     [Tooltip("True when time has reached dayStopHour and is waiting for user action to advance.")]
     [SerializeField] private bool isWaitingForNextDay = false;
 
+    /// <summary>True when the clock has reached dayStopHour (20:00).</summary>
+    public bool IsWaitingForNextDay => isWaitingForNextDay;
+
+    public static GameManager Instance { get; private set; }
+
     [Header("Camera Follow")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Vector3 cameraOffset = new(0f, 0f, -10f);
@@ -31,10 +36,15 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [Tooltip("Optional text used for interaction prompts.")]
     [SerializeField] private TextMeshProUGUI controlText;
+
+    [Header("Rent")]
+    private RentManager rentManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
+
         // Reset static state when scene loads
         PlayerMovement.ActiveMenuCount = 0;
         Time.timeScale = 1f;
@@ -105,6 +115,10 @@ public class GameManager : MonoBehaviour
             return;
         }
         inventoryUi.UpdateInventoryUI(playerInventory);
+
+        rentManager = RentManager.Instance;
+        if (rentManager == null)
+            rentManager = FindFirstObjectByType<RentManager>();
     }
 
     // Update is called once per frame
@@ -180,6 +194,20 @@ public class GameManager : MonoBehaviour
 
     public void EndDay()
     {
+        // ── Pay rent before sleeping ──
+        if (rentManager != null && playerGold != null)
+        {
+            if (!rentManager.TryPayRent(playerGold, dayNumber))
+            {
+                // Player can't afford rent — delete save and return to menu
+                SaveManager.DeleteSave();
+                Time.timeScale = 1f;
+                PlayerMovement.ActiveMenuCount = 0;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                return;
+            }
+        }
+
         Debug.Log("Nov dan");
         currentTime = 8f;
         dayNumber++;

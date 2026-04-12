@@ -18,11 +18,20 @@ public class CatalogueInteractable : MonoBehaviour, IInteractable
     {
         if (catalogueInput == null) return;
 
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+        {
+            Debug.Log("CatalogueInteractable: Shop is closed for the day.");
+            return;
+        }
+
         catalogueInput.ToggleCatalogue();
     }
 
     public string GetInteractionPrompt()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+            return "[E] Catalogue (closed for the day)";
+
         return prompt;
     }
 }
