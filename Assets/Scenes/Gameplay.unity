@@ -2663,7 +2663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &198926647
 Transform:
   m_ObjectHideFlags: 0
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 128.97139, w: 29.158735}
+  m_margin: {x: 0, y: 0, z: 85.0625, w: 29.158735}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -40721,11 +40721,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 911977612}
+  - {fileID: 619712903}
   - {fileID: 485170007}
   - {fileID: 898410788}
   - {fileID: 1891691796}
   - {fileID: 157890789}
-  - {fileID: 619712903}
   m_Father: {fileID: 74937671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -41282,7 +41282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1702072675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43416,12 +43416,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 505144026}
   - {fileID: 1973127873}
   - {fileID: 1439832942}
   - {fileID: 1869792333}
   - {fileID: 517757534}
   - {fileID: 1932207109}
-  - {fileID: 505144026}
   m_Father: {fileID: 74937671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
