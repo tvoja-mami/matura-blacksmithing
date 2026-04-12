@@ -34,6 +34,9 @@ public class PauseMenuUI : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
         PlayerMovement.ActiveMenuCount++;
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIOpen();
     }
 
     public void Resume()
@@ -42,6 +45,9 @@ public class PauseMenuUI : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         PlayerMovement.ActiveMenuCount--;
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIClose();
     }
 
     public void OnMainMenuPressed()

@@ -88,6 +88,12 @@ public class InventoryInput : MonoBehaviour
 
         isInventoryOpen = visible;
 
+        if (SoundManager.Instance != null)
+        {
+            if (visible) SoundManager.Instance.PlayUIOpen();
+            else         SoundManager.Instance.PlayUIClose();
+        }
+
         if (canvasGroup != null)
         {
             canvasGroup.alpha = visible ? 1f : 0f;

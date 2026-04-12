@@ -69,6 +69,9 @@ public class ForgeUI : MonoBehaviour
         forgePanel.SetActive(true);
         PlayerMovement.ActiveMenuCount++;
         PopulateRecipeList();
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIOpen();
     }
 
     public void CloseForge()
@@ -76,6 +79,9 @@ public class ForgeUI : MonoBehaviour
         isForgeOpen = false;
         forgePanel.SetActive(false);
         PlayerMovement.ActiveMenuCount--;
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIClose();
     }
 
     public void ToggleForge()

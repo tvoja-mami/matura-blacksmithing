@@ -41,6 +41,9 @@ public class SellUI : MonoBehaviour
         sellPanel.SetActive(true);
         PlayerMovement.ActiveMenuCount++;
         RefreshItemList();
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIOpen();
     }
 
     public void CloseShop()
@@ -48,6 +51,9 @@ public class SellUI : MonoBehaviour
         isOpen = false;
         sellPanel.SetActive(false);
         PlayerMovement.ActiveMenuCount--;
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIClose();
     }
 
     public void ToggleShop()
@@ -143,6 +149,9 @@ public class SellUI : MonoBehaviour
         CraftedItem item = playerInventory.craftedItems[selectedIndex];
         playerGold.AddGold(item.GetSellValue());
         playerInventory.RemoveCraftedItem(item);
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayCoinSound();
 
         RefreshItemList();
 

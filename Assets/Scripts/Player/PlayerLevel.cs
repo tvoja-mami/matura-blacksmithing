@@ -58,6 +58,10 @@ public class PlayerLevel : MonoBehaviour
         {
             currentLevel++;
             Debug.Log($"PlayerLevel: Level up! Now level {currentLevel}");
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayLevelUp();
+
             OnLevelUp?.Invoke(currentLevel);
         }
 
