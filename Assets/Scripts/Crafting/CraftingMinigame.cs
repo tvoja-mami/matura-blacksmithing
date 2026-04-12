@@ -65,6 +65,7 @@ public class CraftingMinigame : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private PlayerLevel playerLevel;
+    [SerializeField] private ForgeUI forgeUI;
 
     // ── State ──────────────────────────────────────────────────────────────────
     private RecipeData    currentRecipe;
@@ -83,6 +84,9 @@ public class CraftingMinigame : MonoBehaviour
 
         if (playerLevel == null)
             playerLevel = FindFirstObjectByType<PlayerLevel>();
+
+        if (forgeUI == null)
+            forgeUI = FindFirstObjectByType<ForgeUI>(FindObjectsInactive.Include);
 
         gamePanel.SetActive(false);
         resultPanel.SetActive(false);
@@ -185,6 +189,13 @@ public class CraftingMinigame : MonoBehaviour
         hitArrow.SetActive(false);
         PlayerMovement.ActiveMenuCount--;
         currentRecipe = null;
+
+        // If the day ended while crafting, kick the player out of the forge
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+        {
+            if (forgeUI != null)
+                forgeUI.CloseForge();
+        }
     }
 
     // ── Private helpers ────────────────────────────────────────────────────────

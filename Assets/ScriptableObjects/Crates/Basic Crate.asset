@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic Crate
   m_EditorClassIdentifier: Assembly-CSharp::OreCrate
   crateType: Basic
-  cratePrice: 30
+  cratePrice: 60
   requiredLevel: 1
   crateIcon: {fileID: -4402984258483700891, guid: e301363383070be3ea903c977a88b23d, type: 3}
   description: The cheapest and the least desirabable crate, barely worth opening.

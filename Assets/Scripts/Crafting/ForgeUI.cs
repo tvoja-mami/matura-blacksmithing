@@ -51,16 +51,19 @@ public class ForgeUI : MonoBehaviour
     {
         PlayerLevel.OnLevelUp                += HandleLevelUp;
         RecipeUnlockManager.OnUnlocksChanged += HandleUnlocksChanged;
+        PlayerInventory.OnInventoryChanged   += HandleInventoryChanged;
     }
 
     private void OnDisable()
     {
         PlayerLevel.OnLevelUp                -= HandleLevelUp;
         RecipeUnlockManager.OnUnlocksChanged -= HandleUnlocksChanged;
+        PlayerInventory.OnInventoryChanged   -= HandleInventoryChanged;
     }
 
     private void HandleLevelUp(int _)       { if (isForgeOpen) PopulateRecipeList(); }
     private void HandleUnlocksChanged()     { if (isForgeOpen) PopulateRecipeList(); }
+    private void HandleInventoryChanged()   { if (isForgeOpen && selectedRecipe != null) ShowRequiredItems(selectedRecipe); }
 
     // ── Open / Close ───────────────────────────────────────────────────────────
 
@@ -177,6 +180,13 @@ public class ForgeUI : MonoBehaviour
     public void TryCraft()
     {
         if (selectedRecipe == null) return;
+
+        // Day is over — don't allow new crafts
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+        {
+            CloseForge();
+            return;
+        }
 
         bool isLocked = RecipeUnlockManager.Instance != null
                         && !RecipeUnlockManager.Instance.IsUnlocked(selectedRecipe);
