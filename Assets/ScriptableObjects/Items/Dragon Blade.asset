@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Dragon Blade
   itemID: 42
   icon: {fileID: -215664898694585508, guid: 155c02162e08bd1498b4bc32cb3223de, type: 3}
-  baseValue: 2000
+  baseValue: 1400
   description: 
   quantity: 0

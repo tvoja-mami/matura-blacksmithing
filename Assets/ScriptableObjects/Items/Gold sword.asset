@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Gold Sword
   itemID: 31
   icon: {fileID: 6918281034950216153, guid: 2051831ec1efc434ab0adb328b8f84e1, type: 3}
-  baseValue: 500
+  baseValue: 350
   description: 
   quantity: 0

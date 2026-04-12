@@ -13,7 +13,20 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Vector2 lastMoveDirection = Vector2.down;
 
-    public static int ActiveMenuCount { get; set; }
+    // ── Menu tracking ──────────────────────────────────────────────────────
+    private static int _activeMenuCount;
+    public static int ActiveMenuCount
+    {
+        get => _activeMenuCount;
+        set
+        {
+            if (value < _activeMenuCount)           // a menu is closing
+                LastMenuCloseFrame = Time.frameCount;
+            _activeMenuCount = value;
+        }
+    }
+    /// <summary>Frame number on which a menu was last closed.</summary>
+    public static int LastMenuCloseFrame { get; private set; } = -1;
 
     private void Awake()
     {

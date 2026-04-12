@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Wooden Shield
   itemID: 13
   icon: {fileID: -5463526075392100123, guid: 0e368b0fcda4fa5488bf8389cbf4b3a5, type: 3}
-  baseValue: 80
+  baseValue: 50
   description: 
   quantity: 0

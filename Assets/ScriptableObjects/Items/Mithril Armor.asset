@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Mithril Armor
   itemID: 43
   icon: {fileID: -2929238418466974789, guid: f32fd8b37db40a64e86f48f600e6b094, type: 3}
-  baseValue: 1500
+  baseValue: 1050
   description: 
   quantity: 0

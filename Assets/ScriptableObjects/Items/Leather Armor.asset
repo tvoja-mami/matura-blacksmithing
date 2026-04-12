@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Leather Armor
   itemID: 23
   icon: {fileID: -8430581797602664377, guid: 98fa7d25733bb3c43b86f472d4e2c3d4, type: 3}
-  baseValue: 280
+  baseValue: 200
   description: 
   quantity: 0

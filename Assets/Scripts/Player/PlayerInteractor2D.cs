@@ -44,6 +44,13 @@ public class PlayerInteractor2D : MonoBehaviour
 
     private void Update()
     {
+        // Hide prompt while a menu is open
+        if (PlayerMovement.ActiveMenuCount > 0)
+        {
+            HidePrompt();
+            return;
+        }
+
         IInteractable target = GetCurrentInteractable();
         if (target != null)
             ShowPrompt(target.GetInteractionPrompt());
@@ -51,7 +58,7 @@ public class PlayerInteractor2D : MonoBehaviour
             HidePrompt();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other == null) return;
 
@@ -60,9 +67,10 @@ public class PlayerInteractor2D : MonoBehaviour
             inRange[other] = interactable;
     }
 
-    private void FixedUpdate()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        inRange.Clear();
+        if (other == null) return;
+        inRange.Remove(other);
     }
 
     private static IInteractable GetInteractable(Collider2D collider)

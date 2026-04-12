@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Iron Dagger
   itemID: 10
   icon: {fileID: -4008319789302172730, guid: 830be9f23abfe064b91282ef767805e3, type: 3}
-  baseValue: 40
+  baseValue: 25
   description: 
   quantity: 0
