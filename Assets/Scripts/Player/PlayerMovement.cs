@@ -20,6 +20,18 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (SoundManager.Instance == null) return;
+
+        bool isMoving = ActiveMenuCount == 0 && (horizontalInput != 0f || verticalInput != 0f);
+
+        if (isMoving)
+            SoundManager.Instance.StartFootsteps();
+        else
+            SoundManager.Instance.StopFootsteps();
+    }
+
     private void FixedUpdate()
     {
         if (ActiveMenuCount > 0)

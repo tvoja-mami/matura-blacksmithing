@@ -169,6 +169,12 @@ public class CraftingMinigame : MonoBehaviour
         qualityResult.AddHit(quality);
         craftBar.RandomizeZones();
         ShowFeedback(quality);
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayHammerHit();
+            SoundManager.Instance.PlayHitFeedback(quality);
+        }
         UpdateGameUI();
     }
 
@@ -209,6 +215,9 @@ public class CraftingMinigame : MonoBehaviour
         playerLevel?.AddXP(xpGained);
 
         Debug.Log($"Craft complete — {currentRecipe.outputItem.itemName} | {qualityResult} | Rarity: {RarityHelper.GetName(rarity)} | XP gained: {xpGained}");
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayCraftComplete();
 
         ShowResultPanel(rarity, xpGained);
     }
