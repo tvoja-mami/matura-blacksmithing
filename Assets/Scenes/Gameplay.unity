@@ -3484,6 +3484,7 @@ GameObject:
   - component: {fileID: 335859894}
   - component: {fileID: 335859893}
   - component: {fileID: 335859892}
+  - component: {fileID: 335859896}
   m_Layer: 5
   m_Name: SellButton
   m_TagString: Untagged
@@ -3620,6 +3621,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335859890}
   m_CullTransparentMesh: 1
+--- !u!114 &335859896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335859890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &408414598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,6 +4817,7 @@ GameObject:
   - component: {fileID: 517757537}
   - component: {fileID: 517757536}
   - component: {fileID: 517757535}
+  - component: {fileID: 517757538}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -4925,6 +4939,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517757533}
   m_CullTransparentMesh: 1
+--- !u!114 &517757538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517757533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14425,6 +14451,7 @@ GameObject:
   - component: {fileID: 1160885041}
   - component: {fileID: 1160885040}
   - component: {fileID: 1160885038}
+  - component: {fileID: 1160885043}
   m_Layer: 5
   m_Name: Expensive Crate
   m_TagString: Untagged
@@ -14563,6 +14590,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160885036}
   m_CullTransparentMesh: 1
+--- !u!114 &1160885043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160885036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &1191457069
 GameObject:
   m_ObjectHideFlags: 0
@@ -39534,6 +39573,7 @@ GameObject:
   - component: {fileID: 1434455997}
   - component: {fileID: 1434455996}
   - component: {fileID: 1434455995}
+  - component: {fileID: 1434455999}
   m_Layer: 5
   m_Name: BuyCrateButton
   m_TagString: Untagged
@@ -39658,6 +39698,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434455993}
   m_CullTransparentMesh: 1
+--- !u!114 &1434455999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434455993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &1439832939
 GameObject:
   m_ObjectHideFlags: 0
@@ -41265,6 +41317,7 @@ GameObject:
   - component: {fileID: 1696502927}
   - component: {fileID: 1696502926}
   - component: {fileID: 1696502924}
+  - component: {fileID: 1696502929}
   m_Layer: 5
   m_Name: NormalCrate
   m_TagString: Untagged
@@ -41403,6 +41456,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696502922}
   m_CullTransparentMesh: 1
+--- !u!114 &1696502929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696502922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &1702072674
 GameObject:
   m_ObjectHideFlags: 0
@@ -44023,6 +44088,7 @@ GameObject:
   - component: {fileID: 1923906739}
   - component: {fileID: 1923906738}
   - component: {fileID: 1923906737}
+  - component: {fileID: 1923906740}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -44144,6 +44210,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923906735}
   m_CullTransparentMesh: 1
+--- !u!114 &1923906740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923906735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &1932207108
 GameObject:
   m_ObjectHideFlags: 0
@@ -44772,6 +44850,7 @@ GameObject:
   - component: {fileID: 1985049868}
   - component: {fileID: 1985049871}
   - component: {fileID: 1985049872}
+  - component: {fileID: 1985049873}
   m_Layer: 5
   m_Name: CheapCrate
   m_TagString: Untagged
@@ -44910,6 +44989,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 0
+--- !u!114 &1985049873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985049866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &1994883928
 GameObject:
   m_ObjectHideFlags: 0
@@ -45431,6 +45522,7 @@ GameObject:
   - component: {fileID: 2057400477}
   - component: {fileID: 2057400476}
   - component: {fileID: 2057400475}
+  - component: {fileID: 2057400478}
   m_Layer: 4
   m_Name: CraftButton
   m_TagString: Untagged
@@ -45552,6 +45644,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057400473}
   m_CullTransparentMesh: 1
+--- !u!114 &2057400478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057400473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!222 &2064910479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45572,6 +45676,7 @@ GameObject:
   - component: {fileID: 2071831387}
   - component: {fileID: 2071831386}
   - component: {fileID: 2064910479}
+  - component: {fileID: 2071831388}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -45685,6 +45790,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2071831388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071831384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a25558905b8c43817cea30e10970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
 --- !u!1 &2077174028
 GameObject:
   m_ObjectHideFlags: 0
