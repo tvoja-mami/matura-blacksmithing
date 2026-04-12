@@ -26,6 +26,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnPlayPressed()
     {
+        Debug.Log($"MainMenuUI: OnPlayPressed called. HasSave={SaveManager.HasSave()}, loading scene '{gameplaySceneName}'");
         ShouldLoadSave = SaveManager.HasSave();
         SceneManager.LoadScene(gameplaySceneName);
     }

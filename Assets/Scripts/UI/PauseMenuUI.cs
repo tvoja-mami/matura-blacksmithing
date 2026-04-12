@@ -23,7 +23,8 @@ public class PauseMenuUI : MonoBehaviour
         {
             if (isPaused)
                 Resume();
-            else
+            else if (PlayerMovement.ActiveMenuCount == 0
+                     && PlayerMovement.LastMenuCloseFrame != Time.frameCount)
                 Pause();
         }
     }
