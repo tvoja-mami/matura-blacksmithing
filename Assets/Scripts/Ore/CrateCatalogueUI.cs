@@ -233,6 +233,9 @@ public class CrateCatalogueUI : MonoBehaviour
 
         playerGold.RemoveGold(crate.cratePrice);
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayCoinSound();
+
         foreach (var drop in crate.drops)
         {
             if (drop.item != null && drop.amount > 0)
