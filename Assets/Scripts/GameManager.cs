@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Reset static state when scene loads
+        PlayerMovement.ActiveMenuCount = 0;
+        Time.timeScale = 1f;
+
         if (playerTransform == null)
         {
             PlayerMovement movementPlayer = FindFirstObjectByType<PlayerMovement>();

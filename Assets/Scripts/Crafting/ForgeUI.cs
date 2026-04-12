@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
@@ -88,6 +89,12 @@ public class ForgeUI : MonoBehaviour
     {
         if (isForgeOpen) CloseForge();
         else OpenForge();
+    }
+
+    private void Update()
+    {
+        if (isForgeOpen && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            CloseForge();
     }
 
     // ── Recipe List ────────────────────────────────────────────────────────────

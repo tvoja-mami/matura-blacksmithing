@@ -58,6 +58,13 @@ public class CatalogueInput : MonoBehaviour
         SetVisible(!isCatalogueOpen);
     }
 
+    private void Update()
+    {
+        if (isCatalogueOpen && UnityEngine.InputSystem.Keyboard.current != null
+            && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
+            CloseCatalogue();
+    }
+
     private void EnsureCanvasGroup()
     {
         if (canvasGroup == null)

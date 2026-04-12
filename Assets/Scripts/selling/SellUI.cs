@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
@@ -60,6 +61,12 @@ public class SellUI : MonoBehaviour
     {
         if (isOpen) CloseShop();
         else OpenShop();
+    }
+
+    private void Update()
+    {
+        if (isOpen && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            CloseShop();
     }
 
     // ────────── Selection (called by SellSlotUI) ──────────
