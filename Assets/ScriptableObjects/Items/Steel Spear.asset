@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Steel Spear
   itemID: 25
   icon: {fileID: 3327403951860599596, guid: 153110ebeacb09d4d9f325e027431383, type: 3}
-  baseValue: 190
+  baseValue: 130
   description: 
   quantity: 0

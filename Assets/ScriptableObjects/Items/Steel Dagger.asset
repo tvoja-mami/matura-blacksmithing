@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Steel Dagger
   itemID: 20
   icon: {fileID: -3068916185641737711, guid: af2189a2e17541348a1a926a062eff75, type: 3}
-  baseValue: 90
+  baseValue: 60
   description: 
   quantity: 0

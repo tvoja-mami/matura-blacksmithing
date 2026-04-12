@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Iron Spear
   itemID: 14
   icon: {fileID: -6838490919214342628, guid: 506084a67484f5643a4299cdf6f46c0d, type: 3}
-  baseValue: 75
+  baseValue: 45
   description: 
   quantity: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Legendary Crate
   m_EditorClassIdentifier: Assembly-CSharp::OreCrate
   crateType: Legendary
-  cratePrice: 700
+  cratePrice: 1200
   requiredLevel: 9
   crateIcon: {fileID: 5647082962776326571, guid: 74c5882ee185be126b123f553b1ea3ed, type: 3}
   description: The most prestigious crate, involves only the most premium materials

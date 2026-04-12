@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Legendary Crown
   itemID: 44
   icon: {fileID: -7920587165966089534, guid: 1ffcf1873e228624c86bd08dc761766b, type: 3}
-  baseValue: 2000
+  baseValue: 1500
   description: 
   quantity: 0

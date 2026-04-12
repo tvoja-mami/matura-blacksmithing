@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Royal Axe
   itemID: 33
   icon: {fileID: 3853937302589951450, guid: 9d8587263f2979647a9fcf7bc6f06f94, type: 3}
-  baseValue: 550
+  baseValue: 380
   description: 
   quantity: 0

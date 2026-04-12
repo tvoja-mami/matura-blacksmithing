@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Crown
   itemID: 34
   icon: {fileID: -4761399828162640342, guid: 5f561b00d716f2a43a268324ca4b2b8a, type: 3}
-  baseValue: 800
+  baseValue: 550
   description: 
   quantity: 0

@@ -208,6 +208,15 @@ public class CrateCatalogueUI : MonoBehaviour
         if (selectedIndex < 0 || selectedIndex >= crates.Length)
             return;
 
+        // Day is over — close the catalogue instead of allowing a purchase
+        if (GameManager.Instance != null && GameManager.Instance.IsWaitingForNextDay)
+        {
+            var catalogueInput = FindFirstObjectByType<CatalogueInput>();
+            if (catalogueInput != null)
+                catalogueInput.CloseCatalogue();
+            return;
+        }
+
         OreCrate crate = crates[selectedIndex];
 
         if (crate.drops == null || crate.drops.Length == 0)

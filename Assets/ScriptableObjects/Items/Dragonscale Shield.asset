@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Dragonscale Shield
   itemID: 45
   icon: {fileID: 5177772953180608429, guid: a6701770599d8f142ba9b9aa0205dc77, type: 3}
-  baseValue: 1800
+  baseValue: 1300
   description: 
   quantity: 0
