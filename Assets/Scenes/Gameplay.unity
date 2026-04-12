@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 700 gold
+  m_text: 1200 gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
@@ -6069,7 +6069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30 gold
+  m_text: 60 gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
@@ -8094,7 +8094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200 gold
+  m_text: 350 gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
   m_sharedMaterial: {fileID: 778911076006619777, guid: 1af68b0d6c9316d4fa9adfa98f68a34a, type: 2}
@@ -41260,7 +41260,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69a96c04343a76ed8ccc20c53331ae0, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ending
   victoryPanel: {fileID: 1545827338}
   mainMenuSceneName: MainMenu
@@ -41281,7 +41281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1519132014
 MonoBehaviour:
   m_ObjectHideFlags: 0
