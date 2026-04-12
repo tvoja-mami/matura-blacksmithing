@@ -2,41 +2,52 @@ using UnityEngine;
 
 /// <summary>
 /// Interactable door that lets the player buy the shop for 250 000 gold,
-/// finishing the game when purchased.
+/// triggering the victory / ending sequence.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class DoorInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private int shopPrice = 250000;
-    [SerializeField] private string prompt = "[E] Buy the shop for 250 000g";
-    [SerializeField] private PlayerGold playerGold;
+    [SerializeField] private int shopCost = 250000;
     [SerializeField] private Ending ending;
 
     private void Awake()
     {
-        playerGold ??= FindFirstObjectByType<PlayerGold>();
-        ending     ??= FindFirstObjectByType<Ending>(FindObjectsInactive.Include);
+        if (ending == null)
+            ending = FindFirstObjectByType<Ending>(FindObjectsInactive.Include);
     }
+
+    private bool ShopOwned =>
+        RentManager.Instance != null && !RentManager.Instance.Rent;
 
     public void Interact()
     {
-        if (playerGold == null || ending == null) return;
+        if (ShopOwned) return;
 
-        if (playerGold.CurrentGold < shopPrice)
+        var playerGold = FindFirstObjectByType<PlayerGold>();
+        if (playerGold == null) return;
+
+        if (playerGold.CurrentGold < shopCost)
         {
-            Debug.Log($"ShopDoor: Not enough gold ({playerGold.CurrentGold}/{shopPrice}).");
+            Debug.Log($"DoorInteractable: Not enough gold. Need {shopCost}g, have {playerGold.CurrentGold}g.");
             return;
         }
 
-        playerGold.RemoveGold(shopPrice);
-        ending.ShowVictory();
+        playerGold.RemoveGold(shopCost);
+        Debug.Log($"DoorInteractable: Shop purchased for {shopCost}g!");
+
+        if (ending != null)
+            ending.ShowVictory();
     }
 
     public string GetInteractionPrompt()
     {
-        if (playerGold != null && playerGold.CurrentGold >= shopPrice)
-            return prompt;
+        if (ShopOwned)
+            return "Shop Owned";
 
-        return $"[E] Buy the shop ({shopPrice}g) \n\nnot enough gold";
+        var playerGold = FindFirstObjectByType<PlayerGold>();
+        if (playerGold != null && playerGold.CurrentGold >= shopCost)
+            return $"[E] Buy the shop ({shopCost}g)";
+
+        return $"<color=red>[E] Buy the shop ({shopCost}g)</color>";
     }
 }

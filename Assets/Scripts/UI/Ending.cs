@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Full-screen victory panel shown when the player buys the shop.
 /// Attach to a Canvas or child panel that starts disabled.
-/// Wire the "Main Menu" button to OnMainMenuPressed() in the Inspector.
+/// Wire "Continue" to OnContinuePressed() and "Main Menu" to OnMainMenuPressed().
 /// </summary>
 public class Ending : MonoBehaviour
 {
