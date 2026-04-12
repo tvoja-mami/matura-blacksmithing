@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerInteractor2D : MonoBehaviour
 {
-    private readonly List<IInteractable> inRange = new();
+    [Header("Prompt UI")]
+    [SerializeField] private GameObject promptPanel;
+    [SerializeField] private TextMeshProUGUI promptText;
+
+    private readonly Dictionary<Collider2D, IInteractable> inRange = new();
     private PlayerControls controls;
 
     private void Awake()
@@ -21,10 +26,7 @@ public class PlayerInteractor2D : MonoBehaviour
 
     private void OnDisable()
     {
-        if (controls == null)
-        {
-            return;
-        }
+        if (controls == null) return;
 
         controls.Gameplay.Interact.performed -= OnInteract;
         controls.Gameplay.Disable();
@@ -35,55 +37,63 @@ public class PlayerInteractor2D : MonoBehaviour
         IInteractable target = GetCurrentInteractable();
         if (target != null)
         {
+            HidePrompt();
             target.Interact();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other == null) return;
-
-        var interactable = GetInteractable(other);
-
-        if (interactable != null && !inRange.Contains(interactable))
-        {
-            inRange.Add(interactable);
-        }
+        IInteractable target = GetCurrentInteractable();
+        if (target != null)
+            ShowPrompt(target.GetInteractionPrompt());
+        else
+            HidePrompt();
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other == null) return;
 
         var interactable = GetInteractable(other);
-
         if (interactable != null)
-        {
-            inRange.Remove(interactable);
-        }
+            inRange[other] = interactable;
+    }
+
+    private void FixedUpdate()
+    {
+        inRange.Clear();
     }
 
     private static IInteractable GetInteractable(Collider2D collider)
     {
         var interactable = collider.GetComponentInParent<IInteractable>();
         if (interactable == null)
-        {
             interactable = collider.GetComponent<IInteractable>();
-        }
-
         return interactable;
     }
 
     private IInteractable GetCurrentInteractable()
     {
-        for (int i = inRange.Count - 1; i >= 0; i--)
+        foreach (var kvp in inRange)
         {
-            if (inRange[i] != null)
-            {
-                return inRange[i];
-            }
+            if (kvp.Key != null && kvp.Value is MonoBehaviour mb && mb != null)
+                return kvp.Value;
         }
-
         return null;
+    }
+
+    // ────────── Prompt UI ──────────
+
+    private void ShowPrompt(string text)
+    {
+        if (promptPanel != null) promptPanel.SetActive(true);
+        if (promptText  != null) promptText.text = text;
+    }
+
+    private void HidePrompt()
+    {
+        if (promptPanel != null) promptPanel.SetActive(false);
+        if (promptText  != null) promptText.text = "";
     }
 }
